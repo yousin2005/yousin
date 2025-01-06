@@ -32,25 +32,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 		fetch(url)
 				.then(response => {
-					if (response.status === 403) {
-						alert("다운로드 가능 횟수를 초과했습니다.");
-					} else if (response.status === 404) {
-						alert("파일을 찾을 수 없습니다.");
-					} else {
-						return response.blob();
+					if (!response.ok) {
+						if (response.status === 403) {
+							alert("다운로드 가능 횟수를 초과했습니다.");
+						} else if (response.status === 404) {
+							alert("파일을 찾을 수 없습니다.");
+						} else {
+							throw new Error("다운로드 중 오류 발생");
+						}
 					}
+					return response.blob();
 				})
 				.then(blob => {
 					if (blob) {
 						const link = document.createElement("a");
 						link.href = window.URL.createObjectURL(blob);
-						link.download = `${fileDay}.pdf`;
+						link.download = `${fileDay}.pdf`; // 다운로드될 파일 이름
+						document.body.appendChild(link);
 						link.click();
+						link.remove();
 
-						location.reload();
+						// Blob URL 해제
+						window.URL.revokeObjectURL(link.href);
+
+						// location.reload()를 비동기로 호출
+						setTimeout(() => {
+							location.reload();
+						}, 1500); // 다운로드 후 1.5초 후 새로고침
 					}
 				})
-				.catch(error => console.error("Error downloading file:", error));
+				.catch(error => {
+					console.error("파일 다운로드 오류:", error);
+				});
 	}
 
 	function logout() {
