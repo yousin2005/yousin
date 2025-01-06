@@ -9,7 +9,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MK3LCST6');</script>
 <!-- End Google Tag Manager -->
-<meta charset="UTF-8"><!-- 테스트 -->
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>유신예상종합지</title>
 <meta name="naver-site-verification" content="a6aca821283eee145a2bdd48ca7b1a509479efc1" />
@@ -48,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     line-height: 55px;
     font-size: 26px;
     background-color: #9ccc3c;
-    color: white;
+    color: #000000;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -66,15 +66,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         font-size: 18px;
     }
 
-	.code_txt{text-align: center;    letter-spacing: -1px;margin-top:70px}
-	.code_txt1{font-size: 6vw; font-weight: 800; margin-bottom: 4vw;}
-	.code_txt2{    line-height: 5vw;}
-	.code_con{    width: 90%;margin: 0 auto;}
+	.code_txt{text-align: center; letter-spacing: -1px; margin-top:70px}
+	.code_txt1{font-size: 8vw; font-weight: 700; margin-bottom: 4vw;}
+	.code_txt2{line-height: 5vw;}
+	.code_con{width: 90%; margin: 0 auto;}
 
 
 @media only screen and (max-width: 1920px) {
 
-	.code_txt1{font-size: 2vw;margin-bottom: 1vw;}
+	.code_txt1{font-size: 2vw; margin-bottom: 1vw;}
 	.code_txt2{line-height: 1.5;}
 
 }
@@ -82,7 +82,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 @media only screen and (max-width: 640px) {
 
-	.code_txt1 {font-size: 6vw;margin-bottom: 4vw;}
+	.code_txt1 {font-size: 8vw; margin-bottom: 4vw;}
 	.code_txt2 {line-height: 5vw;}
 
 }
@@ -110,13 +110,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div class="back">
 		  <a href="../" ><img src="../img/back.png" alt="홈화면" ></a>
 		</div>
-		<a href="#" onclick="return false;" class="logo"><img src="../img/logo.jpg" alt="로고 이미지"></a>
+		<a href="#" onclick="return false;" class="logo"><img src="../img/sub_logo6.jpg" alt="로고 이미지"></a>
+		<img src="../img/code_info.jpg" alt="사용방법">
 	</div>
 
 	<div class="wrap">
 		<div class="code_txt">
 			<p class="code_txt1">쿠폰번호 입력하기</p>
-			<p class="code_txt2">유신예산종합지 모바일을 이용하시려면<br />네이버 스토어에서 쿠폰 구매 후 이용해 주세요</p>
+			<p class="code_txt2">유신예산종합지 모바일을 이용하시려면<br />네이버 스토어에서 쿠폰 구매 후 이용해 주세요<br />
+			1. 네이버 스토어에서 구매후 발급받은 쿠폰번호 복사하기<br />2. 유신예상종합지에서 쿠폰번호 입력란에 쿠폰번호 붙여넣기<br />
+		    3. "확인"버튼을 눌러 이용하시면 됩니다.
+			</p>
+
 		</div>
 		<form id="loginForm" method="post" action="/login"  >
 			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
@@ -142,7 +147,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div class="wrap">
 				<br /><p class="f_logo_tit">유신예상종합지</p><br/>
 				<span>
-				대표 : 장성인  |  주소 : 서울특별시 강남구 봉은사로 44길 78 옥암빌리지<br />
+				주소 : 서울특별시 강남구 봉은사로 44길 78 옥암빌리지<br />
+				대표 : 장성인 | Email : yousin_2005@naver.com<br />
 				사업자 등록번호 : 458-31-01594  |  통신판매업신고 : 2024-서울강남-06219<br />
 				호스팅제공자 : &copy; Cafe24 Corp. All Rights Reserved.</span><br/><br/>
 		</div>
