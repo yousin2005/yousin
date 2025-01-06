@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+</head>
+<body>
+    <div id="SHOW_TOKEN"></div>
+
+    <br/>
+    <br/>
+
+    <select id="day">
+        <option value="7" >7</option>
+        <option value="30" >30</option>
+        <option value="60" >60</option>
+        <option value="90" >90</option>
+        <option value="180" >180</option>
+        <option value="365" >365</option>
+    </select>
+
+    <br/>
+    <br/>
+
+    <button id="sendRequest">토큰 생성</button>
+
+    <br/>
+    <br/>
+
+
+    <form action="/admin/uploadpdf" method="post" enctype="multipart/form-data">
+        PDF <br/>
+        입력 날짜 : <input type="date" name="savePdfDate" >
+        <br/>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}">
+
+        <input type="file" name="PdfFile" />
+        <button type="submit">엑셀 업로드</button>
+    </form>
+
+    <br/>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>일자</th>
+            <th>등록일자</th>
+            <th>등록 IP</th>
+            <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Thymeleaf 반복문 -->
+        <tr th:each="PdfFile : ${PdfFileList}">
+            <td th:text="${PdfFile.fileDay}"></td>
+            <td th:text="${PdfFile.createdDate}"></td>
+            <td th:text="${PdfFile.createIp}">example.txt</td>
+            <td>
+                <button th:onclick="@{'deletePdfFile(\'' + ${PdfFile.fileDay} + '\')'}" >삭제</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+<!--
+    <form action="/admin/upload" method="post" enctype="multipart/form-data">
+        입력 날짜 : <input type="date" name="saveDate" >
+        <br/>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}">
+
+        <input type="file" name="file" />
+        <button type="submit">엑셀 업로드</button>
+    </form>
+-->
+    <script>
+        function deletePdfFile(delFileDay){
+
+            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
+            fetch('/admin/deletePdf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ deletePdfDate: delFileDay })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
+                        throw new Error('서버 요청 실패: ' + response.status);
+                    }
+                    return response; // JSON 형태로 응답을 파싱
+                })
+                .then(data => {
+                    // 성공적으로 JSON 응답을 받았을 때
+                    console.log('서버 응답 데이터:', data);
+                    // 데이터에 대한 처리 로직을 여기에 추가
+                    alert("삭제 성공");
+
+                    location.reload();
+
+                })
+                .catch(error => {
+                    // 요청이 실패하거나 에러가 발생했을 때
+                    console.error('에러 발생:', error);
+                    // 에러 처리 로직을 여기에 추가
+                });
+        }
+
+        document.getElementById('sendRequest').addEventListener('click', function() {
+
+            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
+            fetch('/admin/makeToken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ day: (document.getElementById('day').value) })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
+                        throw new Error('서버 요청 실패: ' + response.status);
+                    }
+                    return response.json(); // JSON 형태로 응답을 파싱
+                })
+                .then(data => {
+                    // 성공적으로 JSON 응답을 받았을 때
+                    console.log('서버 응답 데이터:', data);
+                    // 데이터에 대한 처리 로직을 여기에 추가
+                    const token = data["token"];
+                    document.getElementById('SHOW_TOKEN').innerText =
+                        token.substring(0,4) + "-" +
+                        token.substring(4,8) + "-" +
+                        token.substring(8,12) + "-" +
+                        token.substring(12,16);
+
+                })
+                .catch(error => {
+                    // 요청이 실패하거나 에러가 발생했을 때
+                    console.error('에러 발생:', error);
+                    // 에러 처리 로직을 여기에 추가
+                });
+
+            /*
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/admin/makeToken', true);  // 요청 유형과 URL 설정
+
+            // 요청 헤더 설정 (필요 시)
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // 서버 응답 처리
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);  // 서버에서 받은 응답 처리
+                    var param = JSON.parse(xhr.responseText);
+                    var token = param["token"];
+                    document.getElementById('SHOW_TOKEN').innerText =
+                        token.substring(0,4) + "-" +
+                        token.substring(4,8) + "-" +
+                        token.substring(8,12) + "-" +
+                        token.substring(12,16);
+                }
+            };
+
+            // 서버로 보낼 데이터
+            var data = JSON.stringify({ day: (document.getElementById('day').value) });
+            xhr.send(data);  // 요청 전송
+            */
+        });
+    </script>
+</body>
+</html>

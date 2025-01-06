@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.4'
+	id 'io.spring.dependency-management' version '1.1.6'
+	id 'war'
+}
+
+group = 'kr.co.yousin'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+bootWar.enabled = false
+war.enabled = true
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '3.3.4'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.3.4'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '3.3.4'
+
+	implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.3.0'
+
+	providedCompile 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+	implementation group: 'org.jsoup', name: 'jsoup', version: '1.18.1'
+	implementation files('libs/java-hwp.jar') // 특정 파일 추가
+
+}
+
+configurations {
+	all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

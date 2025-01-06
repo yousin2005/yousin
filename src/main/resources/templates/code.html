@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MK3LCST6');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>유신예상종합지</title>
+<meta name="naver-site-verification" content="a6aca821283eee145a2bdd48ca7b1a509479efc1" />
+<meta property="og:type" content="website"> 
+<meta property="og:title" content="유신예상종합지">
+<meta property="og:description" content="안녕하세요. 유신예상종합지입니다.">
+<meta property="og:image" content="http://yousin.co.kr/img/yousin_favicon.ico">
+<meta property="og:url" content="http://yousin.co.kr">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo&display=swap">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="shortcut icon" href="http://yousin.co.kr/img/yousin_favicon.ico">
+<link rel="canonical" href="http://yousin.co.kr">
+<meta name="keywords" content="유신,유신지,유신종합지,유신예상지,유신종합예상지,유신예상종합지,예상지,종합지,종합예상지,예상종합지,마필,조교,기수,조교상태,선행,선입,추입,자유,대박,쌍승,복승,복연승,단승,삼복승,삼쌍승,단방,축마,꼬리마,사행,상위마,경주의법칙,축마예상,혼전경주,복병마,능력지수,고배당,초고배당,증감,경주순위">
+<meta name="Description" content="안녕하세요. 유신예상종합지입니다." />
+<style>
+    .code-input-container {
+        margin: 20px 0;
+    }
+
+    #codeInput {
+            width: 100%;
+    padding: 16px 0px;
+    /*font-size: 16px;*/
+	font-size: 26px;
+    border-radius: 90px;
+    border: 1px solid #9ccc3c;
+    text-align: center;
+    }
+
+    .in-button {
+    display: block;
+    text-align: center;
+    /*padding: 16px 0px;*/
+	height: 55px;
+    line-height: 55px;
+    font-size: 26px;
+    background-color: #9ccc3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 90px;
+    /*margin-top: 4vw;*/
+	 margin-top: 8px;
+    }
+
+    .in-button:hover {
+        background-color: #45a049;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+	.code_txt{text-align: center;    letter-spacing: -1px;margin-top:70px}
+	.code_txt1{font-size: 6vw; font-weight: 800; margin-bottom: 4vw;}
+	.code_txt2{    line-height: 5vw;}
+	.code_con{    width: 90%;margin: 0 auto;}
+
+
+@media only screen and (max-width: 1920px) {
+
+	.code_txt1{font-size: 2vw;margin-bottom: 1vw;}
+	.code_txt2{line-height: 1.5;}
+
+}
+
+
+@media only screen and (max-width: 640px) {
+
+	.code_txt1 {font-size: 6vw;margin-bottom: 4vw;}
+	.code_txt2 {line-height: 5vw;}
+
+}
+
+
+</style>
+</head>
+<body id="code">
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MK3LCST6";
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<div class="overlay" onclick="toggleMenu()"></div>
+
+    <div class="menu">
+        <a href="/sub/dep.html"><span class="green"> 사용설명서</span>바로가기</a><br />
+        <a href="/sub/hit.html"><span class="green"> 지난경주</span>바로가기</a><br />
+        <a href="/sub/shop.html"><span class="green"> 전국 판매처</span>바로가기</a><br />
+        <a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span>준비중</a><br />
+	    <a href="/sub/info.html"><span class="green"> 판매처 등록</span>바로가기</a>
+	</div>
+
+	<div class="header">
+		<div class="back">
+		  <a href="../" ><img src="../img/back.png" alt="홈화면" ></a>
+		</div>
+		<a href="#" onclick="return false;" class="logo"><img src="../img/logo.jpg" alt="로고 이미지"></a>
+	</div>
+
+	<div class="wrap">
+		<div class="code_txt">
+			<p class="code_txt1">쿠폰번호 입력하기</p>
+			<p class="code_txt2">유신예산종합지 모바일을 이용하시려면<br />네이버 스토어에서 쿠폰 구매 후 이용해 주세요</p>
+		</div>
+		<form id="loginForm" method="post" action="/login"  >
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+			<div class="code_con">
+				<div class="code-input-container">
+					<input type="text" id="codeInput" name="code" placeholder="코드를 입력하세요">
+					<a id="submitCode" class="in-button" href="#">확인</a>
+					<a id="buyCode" class="in-button" href="https://m.smartstore.naver.com/yousin2005">쿠폰 구매하기</a>
+				</div>
+				<!--<div id="result"></div>-->
+			</div>
+		</form>
+	</div>
+
+
+	<div class="hamburger-menu" onclick="toggleMenu()">
+		<div class="line line01" ></div>
+		<div class="line"></div>
+		<div class="line"></div>
+	</div>
+
+	<footer>
+		<div class="wrap">
+				<br /><p class="f_logo_tit">유신예상종합지</p><br/>
+				<span>
+				대표 : 장성인  |  주소 : 서울특별시 강남구 봉은사로 44길 78 옥암빌리지<br />
+				사업자 등록번호 : 458-31-01594  |  통신판매업신고 : 2024-서울강남-06219<br />
+				호스팅제공자 : &copy; Cafe24 Corp. All Rights Reserved.</span><br/><br/>
+		</div>
+	</footer>
+
+	<script>
+	function toggleMenu() {
+		var overlay = document.querySelector('.overlay');
+		var menu = document.querySelector('.menu');
+		var hamburger = document.querySelector('.hamburger-menu');
+		if (overlay.style.display === "block") {
+			overlay.style.display = "none";
+			menu.style.display = "none";
+			hamburger.classList.remove('change');
+		} else {
+			overlay.style.display = "block";
+			menu.style.display = "block";
+			hamburger.classList.add('change');
+		}
+	}
+	</script>
+<script>
+
+	const  urlParams = new URLSearchParams(window.location.search);
+	const  errCode = urlParams.get("errorCode");
+
+	switch (errCode) {
+		case "NotFound" :
+			alert("해당 코드가 존재 하지 않습니다.");
+			break;
+
+		case "Locked" :
+			alert("해당 코드는 사용이 불가합니다.");
+			break;
+
+		case "AccountExpired" :
+			alert("해당 코드의 유효기간이 지났습니다.");
+			break;
+	}
+
+document.addEventListener('DOMContentLoaded', function() {
+	const codeInput = document.getElementById('codeInput');
+	const submitButton = document.getElementById('submitCode');
+
+	const loginFm = document.getElementById('loginForm');
+
+	submitButton.addEventListener('click', function() {
+		const code = codeInput.value.trim();
+		if (code === '') {
+			alert('코드를 입력해주세요.');
+		} else {
+			loginFm.submit();
+		}
+	});
+
+	// Enter 키 입력 시에도 확인 버튼 클릭과 동일한 동작
+	codeInput.addEventListener('keypress', function(e) {
+		if (e.key === 'Enter') {
+			submitButton.click();
+		}
+	});
+});
+</script>
+</body>
+</html>

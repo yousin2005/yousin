@@ -1,0 +1,1296 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>유신예상종합지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 노토산스 웹폰트 링크 추가 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap">
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="shortcut icon" href="http://yousin.co.kr/img/yousin_favicon.ico">
+	<link rel="canonical" href="http://yousin.co.kr/">
+	<meta name="keywords" content="유신,유신지,유신종합지,유신예상지,유신종합예상지,유신예상종합지,예상지,종합지,종합예상지,예상종합지,경마,마필,조교,기수,조교상태,선행,선입,추입,자유,서울경마,경마문화,명승부,신마,
+	마사일호,과천경마,파워경마,경마필,일등경마,경마짱,로얄더비,컴퓨터경마,열전경마,히트경마,그랑프리,에이스경마,가속도경마,경마코리아,베스트경마,확률경마,뉴월드경마,스피드경마,경마114,스포츠경마,에이원경마,퍼펙트오늘경마,
+경마의신,경마십단,코리아레이스,특급전문가,검빛경마,대박,축마,쌍승,복승,복연승,단승,삼복승,삼쌍승,단방,축마,꼬리마,사행,배팅의법칙,상위마,경주의법칙,축마예상,혼전경주,복병마,능력지수,고배당,초고배당,증감,경주순위,배팅포커스,
+크로바,크로바종합지,크로바예상지,크로바종합예상지,크로바예상종합지,용산,용산종합지,용산예상지,용산종합예상지,용산예상종합지,무궁화,무궁화종합지,무궁화예상지,무궁화종합예상지,무궁화예상종합지">
+	<meta name="Description" content="안녕하세요. 유신예산종합지입니다." />
+
+	<style>
+	.header_sub{/*padding-bottom: 51px;*/padding-bottom: 80px;}
+	/* Add necessary styles */
+	.tab-slider-content-item {display: none;}
+	.tab-slider-content-item.active {	display: block;}
+	.tab-slider-content-item p {font-size:20px;}
+	.today .tab-slider-nav{/*top:50vw*/top:40vw;}
+        /* CSS 초기화 스타일 */
+        .today table {width: 100%; border-collapse: collapse; margin-top:20px}
+        .today th, td {padding: 0px; border: 1px solid #000; text-align: center;font-weight:900}
+        .today thead {background-color: #f9f9f9;}
+        .today caption {caption-side: top; font-weight: bold; margin-bottom: 8px;}
+		.today td{padding: 3px 5px;}
+        .contab { width: 100%; position: fixed;bottom: 0;left: 0; z-index: 100;background-color: #fff;}
+        .contab ul { list-style-type: none;  padding: 0; margin: 0; display: flex; }
+        .contab ul li {/*flex: 1;*/padding: 20px 10px;text-align: center;  cursor: pointer; background-color: #9ccb3d; color: white; border-radius: 10px 10px 0 0; width: 70%;}
+        /*.contab ul li.active {background-color: black; color: white;}*/
+		.contab ul li:first-child {background-color: black; color: white;width: 30%;}
+        .tab-content { border: 1px solid #9ccb3d; border-top: none; padding: 20px; background-color: white;}
+        .tab-content > div {  display: none;}
+        .tab-content > div.active {display: block; }
+
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.5); 
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 89% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 500px; 
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+	</style>
+
+</head>
+
+<body class="today">
+<div class="overlay" onclick="toggleMenu()"></div>
+<div class="menu">
+    <a href="dep.html"><span class="green"> 유신예상종합지</span> 보는 방법</a><br />
+	<a href="hit.html"><span class="green"> 적중</span> 금,토,일</a><br />
+    <a href="shop.html"><span class="green"> 전국 판매처</span> 위치 찾기</a><br />
+    <a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span> 시청하기</a><br />
+    <a href="info.html"><span class="green"> 카톡 상담하기</span> 및 판매처 등록 문의</a>
+</div>
+
+<div class="hamburger-menu" onclick="toggleMenu()">
+    <div class="line line01" ></div>
+    <div class="line"></div>
+    <div class="line"></div>
+</div>
+
+	<!-- 로고 이미지 -->
+	<div class="header_sub">
+
+		<div class="header">
+			<div class="back">
+				<a href="../index.html"><img src="../img/back.png" alt="홈화면"></a>
+			</div>
+			<a href="#" onclick="return false;" class="logo sublogo"><img src="../img/sub_logo5.jpg" alt="로고 이미지"></a>
+			<div style="display: flex; align-items: center; justify-content: space-between;margin-top: -10px;">
+				<a href="#" class="preview" style="display: flex; align-items: center;">
+					<span class="material-icons">chevron_left</span>
+					이전
+				</a>
+				<p style="text-align: center; margin: 0;"><!-- RACE_DATE --></p>
+				<a href="#" class="next" style="display: flex; align-items: center;">
+					다음
+					<span class="material-icons">chevron_right</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="tab-slider">
+		<div class="tab-slider-nav">
+			<!-- RACE_NO_LIST -->
+		</div>
+	</div>
+
+	<div class="wrap" style="margin-top:60vw">
+		<div class="tab-slider-content" style="margin: 250px auto 30px;">
+			<!-- RACE_CONTENT -->
+			<div class="tab-slider-content-item active" data-content="1">
+				<!-- 서울1 콘텐츠 -->
+				<table border="1" style="border: 0;">
+					<thead>
+						<tr>
+							<th colspan="12" style="color:#fff;font-size:30px;background:#000;font-weight: 900;padding: 3vw 0;letter-spacing: -1px;">서울1 800 11:00</th>
+						</tr>
+						<tr>
+							<th colspan="12" style="font-size:18px;border: 0;padding: 3vw 2vw;background: #FFF;">서울 제 1경주 국6등급 별정A 일반 1200m [출발 11:00]</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr style="background:#9ccb3d;font-weight: 900;font-size:20px;">
+							<td colspan="2">세계최강</td>
+							<td colspan="2">청룡열차</td>
+							<td colspan="2">연안부두</td>
+							<td colspan="2">페리토드</td>
+							<td colspan="2">블루치퍼</td>
+							<td colspan="2">만점화살</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td colspan="2" style="border-bottom:0px">8</td>
+							<td colspan="2" style="border-bottom:0px">7</td>
+							<td colspan="2" style="border-bottom:0px">12</td>
+							<td colspan="2" style="border-bottom:0px">8</td>
+							<td colspan="2" style="border-bottom:0px">7</td>
+							<td colspan="2" style="border-bottom:0px">12</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">12</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">8</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">9</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">4</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">12</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">8</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">9</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">4</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td style="border-right: 0px; border-top:0px">9</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">12</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">7</td>
+							<td style="border-left:0px; border-top:0px;">8</td>
+							<td style="border-right: 0px; border-top:0px">9</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">12</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">7</td>
+							<td style="border-left:0px; border-top:0px;">8</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<tbody style="margin-top:20px">
+						<tr style="background:#9ccb3d;font-weight: 900;font-size:20px;">
+							<td colspan="2">세계최강</td>
+							<td colspan="2">청룡열차</td>
+							<td colspan="2">연안부두</td>
+							<td colspan="2">페리토드</td>
+							<td colspan="2">블루치퍼</td>
+							<td colspan="2">만점화살</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td colspan="2" style="border-bottom:0px">8</td>
+							<td colspan="2" style="border-bottom:0px">7</td>
+							<td colspan="2" style="border-bottom:0px">12</td>
+							<td colspan="2" style="border-bottom:0px">8</td>
+							<td colspan="2" style="border-bottom:0px">7</td>
+							<td colspan="2" style="border-bottom:0px">12</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">12</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">8</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">9</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">4</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">12</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">8</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">9</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">4</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td style="border-right: 0px; border-top:0px">9</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">12</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">7</td>
+							<td style="border-left:0px; border-top:0px;">8</td>
+							<td style="border-right: 0px; border-top:0px">9</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">12</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">7</td>
+							<td style="border-left:0px; border-top:0px;">8</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<tbody style="margin-top:20px">
+						<tr style="background:#9ccb3d;font-weight: 900;font-size:20px;">
+							<td colspan="2">세계최강</td>
+							<td colspan="2">청룡열차</td>
+							<td colspan="2">연안부두</td>
+							<td colspan="2">페리토드</td>
+							<td colspan="2">블루치퍼</td>
+							<td colspan="2">만점화살</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td colspan="2" style="border-bottom:0px">8</td>
+							<td colspan="2" style="border-bottom:0px">7</td>
+							<td colspan="2" style="border-bottom:0px">12</td>
+							<td colspan="2" style="border-bottom:0px">8</td>
+							<td colspan="2" style="border-bottom:0px">7</td>
+							<td colspan="2" style="border-bottom:0px">12</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">12</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">8</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">9</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">4</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">12</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">8</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">9</td>
+							<td style="border-right: 0px; border-top:0px; border-bottom:0px">3</td>
+							<td style="border-left:0px; border-top:0px;border-bottom:0px">4</td>
+						</tr>
+						<tr style="font-size:20px;">
+							<td style="border-right: 0px; border-top:0px">9</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">12</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">7</td>
+							<td style="border-left:0px; border-top:0px;">8</td>
+							<td style="border-right: 0px; border-top:0px">9</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">12</td>
+							<td style="border-left:0px; border-top:0px;">4</td>
+							<td style="border-right: 0px; border-top:0px">7</td>
+							<td style="border-left:0px; border-top:0px;">8</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<tbody style="margin-top:20px">
+						<tr style="background:#9ccb3d;font-weight: 900;font-size:20px;">
+							<td colspan="2">종합</td>
+							<td colspan="2">고배당</td>
+							<td colspan="2">초고배당</td>
+							<td colspan="2">능력지수</td>
+						</tr>
+						<tr style="font-size:30px;">
+							<td colspan="2" >5.8.2.4</td>
+							<td colspan="2" >⑥</td>
+							<td colspan="2" >⑩</td>
+							<td colspan="2" >5</td>
+						</tr>
+					</tbody>
+				</table>
+				<table >
+					<p style="text-align:center; margin-top:40px;font-weight:900">승부지수 높은 새벽 조교 우수마</p>
+					<tr style="font-size:20px;">
+						<td rowspan="2" style="background:#e1e1e1">1경주</td>
+						<td rowspan="2">⑥ 고투더발</td>
+						<td style="border-bottom:0px">③ 로드투원</td>
+					</tr>
+					<tr style="font-size:20px;">
+						<td>⑤ 환희의문</td>
+					</tr>
+				</table>
+
+				<table >
+					<p style="text-align:center; margin-top:40px;font-weight:900">출주마 승부지수 분석</p>
+					<tr style="height:56px;font-size:20px;">
+						<td rowspan="2" style="background:#e1e1e1">1경주</td>
+						<td rowspan="2">5.10.8.1.7</td>
+					</tr>
+				</table>
+				<table >
+					<tr style="font-size:18px;">
+						<td >유명경마전문<br />추천마권</td>
+						<td >조교 양호마</td>
+						<td >복병마</td>
+					</tr>
+					<tr style="font-size:20px;">
+						<td style="background:#e1e1e1">1경주</td>
+						<td style="background:#e1e1e1">1경주</td>
+						<td style="background:#e1e1e1">1경주</td>
+					</tr>
+					<tr style="font-size:20px;">
+						<td style="border-bottom:0px">8</td>
+						<td rowspan="3" >⑦⑩①</td>
+						<td rowspan="3" >⑨</td>
+					</tr>
+					<tr style="font-size:20px;">
+						<td style="border-bottom:0px; border-top:0px">3&nbsp;&nbsp;12</td>
+					</tr>
+					<tr style="font-size:20px;">
+						<td style="border-top:0px">9&nbsp;&nbsp;4</td>
+					</tr>
+				</table>
+				<table>
+					<p style="text-align:center; margin-top:40px;font-weight:900">출주마 질주 스타일</p>
+					<tr style="font-size:18px;">
+						<td style="background:#e1e1e1">선행</td>
+						<td style="background:#e1e1e1">선입</td>
+						<td style="background:#e1e1e1">자유</td>
+						<td style="background:#e1e1e1">추입</td>
+					</tr>
+					<tr style="font-size:20px;">
+						<td >5&nbsp;8&nbsp;10</td>
+						<td >6&nbsp;7&nbsp;9</td>
+						<td >1&nbsp;2&nbsp;3&nbsp;4</td>
+						<td >1&nbsp;1</td>
+					</tr>
+				</table>
+				<table >
+					<tr style="font-size:18px">
+						<td >경주별<br />배팅포커스</td>
+						<td >능력상위<br/>마필</td>
+						<td >서울경마<br/>복병마필</td>
+					</tr>
+					<tr style="font-size:20px">
+						<td style="background:#e1e1e1">1경주</td>
+						<td style="background:#e1e1e1">1경주</td>
+						<td style="background:#e1e1e1">1경주</td>
+					</tr>
+					<tr style="font-size:20px">
+						<td>⑦<br />크레이지</td>
+						<td>⑦⑩①</td>
+						<td>⑨</td>
+					</tr>
+				</table>
+				<table >
+					<tr style="font-size:18px">
+						<td >오늘의<br />추천마</td>
+						<td >우승확률<br/>우수마</td>
+					</tr>
+					<tr style="font-size:20px">
+						<td style="background:#e1e1e1">1경주</td>
+						<td style="background:#e1e1e1">1경주</td>
+					</tr>
+					<tr style="font-size:20px">
+						<td>⑨</td>
+						<td>⑦<br/>81.5%</td>
+					</tr>
+				</table>
+				
+				<div style=" text-align:center;margin-top:20px"><!-- height:100px; -->
+					<p style="font-weight:bold;">유신이 A.I. 기술로 만든</p>
+					<div style="background:#000; color:#fff;border-radius:90px; margin:5px auto;height:30px;line-height:30px; width:80%;padding:2vw 0;font-size: 20px;">상위마 경주의 법칙</div>
+					<p style="font-weight:bold;">적중확률이 높아진다!!</p>
+				</div>
+				
+				<div style="width:20%;height:30px;line-height:30px;background:#000;color:#fff;text-align:center;margin: 2vw auto 0;">1R</div>
+				<table>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;text-align: left;padding-left: 5vw;">혈통 기대치</td>
+						<td>①⑨⑩④</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;text-align: left;padding-left: 5vw;">해당거리 복승률</td>
+						<td>③①①</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;text-align: left;padding-left: 5vw;">초반 기록 <span style="font-size:15px;font-weight:bold;">출발-200m</span></td>
+						<td>①⑪⑤③</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;text-align: left;padding-left: 5vw;">후반 기록 <span style="font-size:15px;font-weight:bold;">막판-200m</span></td>
+						<td>②⑧③⑪</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;text-align: left;padding-left: 5vw;">환산한 전체기록</td>
+						<td>①③⑪⑤</td>
+					</tr>
+				</table>
+				<p style="font-size:16px;letter-spacing: -1px;padding-top:2vw;">※ 동일한 번호가 중복될수록 해당 미필의 우승 확률이 높아집니다.</p>
+				
+				<p style="text-align:center; margin-top:40px;font-weight:900">신문 종합</p>
+				<table style="font-size:0.7vw">
+					<tr>
+					  <th>마<br />번</th>
+					  <th>마명</th>
+					  <th>성<br />별</th>
+					  <th>나<br />이</th>
+					  <th>중량</th>
+					  <th>증감</th>
+					  <th>기수</th>
+					  <th>조교사</th>
+					  <th>직전<br />G-3F</th>
+					  <th>직전<br />기록</th>
+					  <th>★</th>
+					  <th>◎</th>
+					  <th>○</th>
+					  <th>△</th>
+					  <th>※</th>
+					  <th>승<br />부</th>
+					  <th>점<br />수</th>
+					  <th>질주<br />습성</th>
+					  <th>훈련<br />상태</th>
+					  <th colspan="4">최근<br />경주순위</th>
+					</tr>
+					<tr class="bornone"><th colspan="23" class="title">부경 제 1경주  국6등급 별정A 1300M 【출발 15:00】</th></tr>
+					<tr>
+					  <td>1</td>
+					  <td>채스퀸</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>진겸</td>
+					  <td>손병직</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>4</td><!-- 경주순위 -->
+					  <td>6</td>
+					  <td>5</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>2</td>
+					  <td>슈프림퀸</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>세형</td>
+					  <td>김효석</td>
+					  <td>0:42.3</td>
+					  <td>1:24.3</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>4</td><!-- 경주순위 -->
+					  <td>2</td>
+					  <td>5</td>
+					  <td>8</td>
+					</tr>
+					<tr>
+					  <td>3</td>
+					  <td>델릴라</td>
+					  <td>암</td>
+					  <td>4</td>
+					  <td>55</td>
+					  <td>·</td>
+					  <td>윤섭</td>
+					  <td>최기홍</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>·</td><!-- 경주순위 -->
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>4</td>
+					  <td>드림마</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>준호</td>
+					  <td>방동석</td>
+					  <td>0:44.3</td>
+					  <td>1:24.5</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>3</td><!-- 경주순위 -->
+					  <td>6</td>
+					  <td>5</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>5</td>
+					  <td>하이퍼포</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>진구</td>
+					  <td>박재호</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>3</td><!-- 경주순위 -->
+					  <td>9</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>6</td>
+					  <td>그린불도</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>상현</td>
+					  <td>라이스</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>2</td><!-- 경주순위 -->
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>7</td>
+					  <td>천하지유</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>실바</td>
+					  <td>문현철</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>·</td><!-- 경주순위 -->
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>8</td>
+					  <td>비긴해피</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>경윤</td>
+					  <td>토마스</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>·</td><!-- 경주순위 -->
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>9</td>
+					  <td>그레이트</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>승완</td>
+					  <td>구민성</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>7</td><!-- 경주순위 -->
+					  <td>5</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>10</td>
+					  <td>해랑진주</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>인권</td>
+					  <td>임성실</td>
+					  <td>0:43.9</td>
+					  <td>1:24.7</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>7</td><!-- 경주순위 -->
+					  <td>6</td>
+					  <td>8</td>
+					  <td>8</td>
+					</tr>
+					<tr>
+					  <td>11</td>
+					  <td>네옴시티</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>성재</td>
+					  <td>이상영</td>
+					  <td>0:44.6</td>
+					  <td>1:24.7</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>8</td><!-- 경주순위 -->
+					  <td>6</td>
+					  <td>11</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>12</td>
+					  <td>비케이도</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>도윤</td>
+					  <td>강형곤</td>
+					  <td>0:44.6</td>
+					  <td>1:23.5</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <td>·</td><!-- 점수 -->
+					  <td>·</td><!-- 질주습성 -->
+					  <td>·</td><!-- 훈련상태 -->
+					  <td>3</td><!-- 경주순위 -->
+					  <td>3</td>
+					  <td>10</td>
+					  <td>·</td>
+					</tr>
+					<!-- //1경기 -->
+
+					<!-- 2경기 
+					<tr class="bornone"><th colspan="23" class="title">부경 제 2경주  국6등급 별정A 1400M 【출발 15:50】</th></tr>
+					<tr>
+					  <td>1</td>
+					  <td>채스퀸</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>진겸</td>
+					  <td>손병직</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 -->
+					  <!--<td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>4</td><!-- 경주순위 
+					  <td>6</td>
+					  <td>5</td>
+					  <td>·</td>
+					</tr>
+								<tr>
+					  <td>2</td>
+					  <td>슈프림퀸</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>세형</td>
+					  <td>김효석</td>
+					  <td>0:42.3</td>
+					  <td>1:24.3</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>4</td><!-- 경주순위 
+					  <td>2</td>
+					  <td>5</td>
+					  <td>8</td>
+					</tr>
+					<tr>
+					  <td>3</td>
+					  <td>델릴라</td>
+					  <td>암</td>
+					  <td>4</td>
+					  <td>55</td>
+					  <td>·</td>
+					  <td>윤섭</td>
+					  <td>최기홍</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>·</td><!-- 경주순위 
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>4</td>
+					  <td>드림마</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>준호</td>
+					  <td>방동석</td>
+					  <td>0:44.3</td>
+					  <td>1:24.5</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>3</td><!-- 경주순위 
+					  <td>6</td>
+					  <td>5</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>5</td>
+					  <td>하이퍼포</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>진구</td>
+					  <td>박재호</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>3</td><!-- 경주순위 
+					  <td>9</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>6</td>
+					  <td>그린불도</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>상현</td>
+					  <td>라이스</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>2</td><!-- 경주순위 
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>7</td>
+					  <td>천하지유</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>실바</td>
+					  <td>문현철</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>·</td><!-- 경주순위 
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>8</td>
+					  <td>비긴해피</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>경윤</td>
+					  <td>토마스</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>·</td><!-- 경주순위 
+					  <td>·</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>9</td>
+					  <td>그레이트</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>승완</td>
+					  <td>구민성</td>
+					  <td>·</td>
+					  <td>·</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>7</td><!-- 경주순위 
+					  <td>5</td>
+					  <td>·</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>10</td>
+					  <td>해랑진주</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>인권</td>
+					  <td>임성실</td>
+					  <td>0:43.9</td>
+					  <td>1:24.7</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>7</td><!-- 경주순위 
+					  <td>6</td>
+					  <td>8</td>
+					  <td>8</td>
+					</tr>
+					<tr>
+					  <td>11</td>
+					  <td>네옴시티</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>성재</td>
+					  <td>이상영</td>
+					  <td>0:44.6</td>
+					  <td>1:24.7</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>8</td><!-- 경주순위 
+					  <td>6</td>
+					  <td>11</td>
+					  <td>·</td>
+					</tr>
+					<tr>
+					  <td>12</td>
+					  <td>비케이도</td>
+					  <td>암</td>
+					  <td>3</td>
+					  <td>54.5</td>
+					  <td>·</td>
+					  <td>도윤</td>
+					  <td>강형곤</td>
+					  <td>0:44.6</td>
+					  <td>1:23.5</td>
+					  <td>★</td>
+					  <td>◎</td>
+					  <td>○</td>
+					  <td>△</td>
+					  <td>※</td>
+					  <td>·</td><!-- 승부 
+					  <td>·</td><!-- 점수 
+					  <td>·</td><!-- 질주습성 
+					  <td>·</td><!-- 훈련상태 
+					  <td>3</td><!-- 경주순위 
+					  <td>3</td>
+					  <td>10</td>
+					  <td>·</td>
+					</tr>
+					<!-- //2경기 -->
+				</table>
+
+				<p style="text-align:center; margin-top:40px;font-weight:900">제목 없음</p>
+				<table>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;font-size:20px;padding-left:5vw;text-align:left;font-weight:bold;">입상마</td>
+						<td>①⑨</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;font-size:20px;padding-left:5vw;text-align:left;font-weight:bold;">상대마</td>
+						<td>③①</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;font-size:20px;padding-left:5vw;text-align:left;font-weight:bold;">복병마</td>
+						<td>①⑪</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;font-size:20px;padding-left:5vw;text-align:left;font-weight:bold;">조교 양호마</td>
+						<td>10.2.1.11</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;font-size:20px;padding-left:5vw;text-align:left;font-weight:bold;">요주의 마</td>
+						<td>①③</td>
+					</tr>
+					<tr style="height:50px;font-size:20px;">
+						<td style="background:#e1e1e1;font-size:20px;padding-left:5vw;text-align:left;font-weight:bold;">편성 추천마</td>
+						<td>①</td>
+					</tr>
+				</table>
+
+				<div class="contab">
+					<ul>
+						<li class="active" data-tab="tab1">행운의 숫자</li>
+						<li data-tab="tab2">경주 예상 바로 보기</li>
+					</ul>
+				</div>
+				<!-- Modal 1 structure -->
+				<div id="modal1" class="modal">
+					<div class="modal-content">
+						<span class="close" data-modal="modal1">&times;</span>
+						<h2>행운의 숫자</h2>
+						<table>
+							<tr style="font-size:20px;">
+								<td style="background:#e1e1e1;">쥐</td>
+								<td>4.6.10</td>
+								<td style="background:#e1e1e1;">말</td>
+								<td>4.60.10</td>
+							</tr>
+							<tr style="font-size:20px;">
+								<td style="background:#e1e1e1;">소</td>
+								<td>1.2.9</td>
+								<td style="background:#e1e1e1;">양</td>
+								<td>4.60.10</td>
+							</tr>
+							<tr style="font-size:20px;">
+								<td style="background:#e1e1e1;">호랑이</td>
+								<td>4.6.10</td>
+								<td style="background:#e1e1e1;">원숭이</td>
+								<td>4.60.10</td>
+							</tr>
+							<tr style="font-size:20px;">
+								<td style="background:#e1e1e1;">토끼</td>
+								<td>4.6.10</td>
+								<td style="background:#e1e1e1;">닭</td>
+								<td>4.60.10</td>
+							</tr>
+							<tr style="font-size:20px;">
+								<td style="background:#e1e1e1;">용</td>
+								<td>4.6.10</td>
+								<td style="background:#e1e1e1;">개</td>
+								<td>4.60.10</td>
+							</tr>
+							<tr style="font-size:20px;">
+								<td style="background:#e1e1e1;">뱀</td>
+								<td>4.6.10</td>
+								<td style="background:#e1e1e1;">돼지</td>
+								<td>4.60.10</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+
+				<!-- Modal 2 structure -->
+				<div id="modal2" class="modal">
+					<div class="modal-content">
+						<span class="close" data-modal="modal2">&times;</span>
+						<h2>경주 예상 바로 보기</h2>
+						<table>
+							<tr style="font-size:20px;">
+								<td style="background:#9ccb3d;">종합</td>
+								<td style="background:#9ccb3d;">고배당</td>
+								<td style="background:#9ccb3d;">초고배당</td>
+								<td style="background:#9ccb3d;">능력지수</td>
+							</tr>
+							<tr style="font-size:20px;">
+								<td >5.8.2.4</td>
+								<td>⑥</td>
+								<td>⑩</td>
+								<td>5</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div style="height:100px">&nbsp;</div>
+			</div>
+
+		
+
+
+			<div class="tab-slider-content-item" data-content="2">
+				<!-- 서울2 콘텐츠 -->
+				<h2>서울2 콘텐츠</h2>
+				<p>서울2에 대한 내용입니다.</p>
+			</div>
+			<div class="tab-slider-content-item" data-content="3">
+				<!-- 서울3 콘텐츠 -->
+				<h2>서울3 콘텐츠</h2>
+				<p>서울3에 대한 내용입니다.</p>
+			</div>
+			<div class="tab-slider-content-item" data-content="4">
+				<!-- 서울4 콘텐츠 -->
+				<h2>서울4 콘텐츠</h2>
+				<p>서울4에 대한 내용입니다.</p>
+			</div>
+			<div class="tab-slider-content-item" data-content="5">
+				<!-- 서울5 콘텐츠 -->
+				<h2>서울5 콘텐츠</h2>
+				<p>서울5에 대한 내용입니다.</p>
+			</div>
+			<div class="tab-slider-content-item" data-content="6">
+				<!-- 서울6 콘텐츠 -->
+				<h2>서울6 콘텐츠</h2>
+				<p>서울6에 대한 내용입니다.</p>
+			</div>
+			<div class="tab-slider-content-item" data-content="7">
+				<!-- 서울7 콘텐츠 -->
+				<h2>서울7 콘텐츠</h2>
+				<p>서울7에 대한 내용입니다.</p>
+			</div>
+			<div class="tab-slider-content-item" data-content="8">
+				<!-- 서울8 콘텐츠 -->
+				<h2>서울8 콘텐츠</h2>
+				<p>서울8에 대한 내용입니다.</p>
+			</div>
+			<div class="tab-slider-content-item" data-content="9">
+				<!-- 서울9 콘텐츠 -->
+				<h2>서울9 콘텐츠</h2>
+				<p>서울9에 대한 내용입니다.</p>
+			</div>
+		</div>
+	</div>
+
+	
+	<footer>
+		<p>&copy; Yousin Corp.</p>
+	</footer>
+<script>
+    function toggleMenu() {
+        var overlay = document.querySelector('.overlay');
+        var menu = document.querySelector('.menu');
+        var hamburger = document.querySelector('.hamburger-menu');
+        if (overlay.style.display === "block") {
+            overlay.style.display = "none";
+            menu.style.display = "none";
+            hamburger.classList.remove('change');
+        } else {
+            overlay.style.display = "block";
+            menu.style.display = "block";
+            hamburger.classList.add('change');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const tabItems = document.querySelectorAll('.tab-slider-nav-item');
+        const contentItems = document.querySelectorAll('.tab-slider-content-item');
+
+        tabItems.forEach(item => {
+            item.addEventListener('click', function () {
+                // 모든 탭에서 active 클래스 제거
+                tabItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // 클릭한 탭에 active 클래스 추가
+                this.classList.add('active');
+
+                // 모든 콘텐츠에서 active 클래스 제거
+                contentItems.forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // 클릭한 탭에 해당하는 콘텐츠에 active 클래스 추가
+                const tabNum = this.getAttribute('data-tab');
+                document.querySelector(`.tab-slider-content-item[data-content="${tabNum}"]`).classList.add('active');
+            });
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.contab ul li').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            // 모든 탭 비활성화
+            document.querySelectorAll('.contab ul li').forEach(function(item) {
+                item.classList.remove('active');
+            });
+
+            // 클릭한 탭 활성화
+            tab.classList.add('active');
+
+            // 모든 콘텐츠 숨김
+            document.querySelectorAll('.tab-content > div').forEach(function(content) {
+                content.classList.remove('active');
+            });
+
+            // 클릭한 탭과 관련된 콘텐츠 표시
+            const activeTab = tab.getAttribute('data-tab');
+            document.getElementById(activeTab).classList.add('active');
+        });
+    });
+</script>
+<script>
+    document.querySelectorAll('.contab ul li').forEach((tab) => {
+        tab.addEventListener('click', function() {
+            const tabData = this.getAttribute('data-tab');
+            let modalId = '';
+
+            if (tabData === 'tab1') {
+                modalId = 'modal1';
+            } else if (tabData === 'tab2') {
+                modalId = 'modal2';
+            }
+
+            document.getElementById(modalId).style.display = 'block';
+        });
+    });
+
+    document.querySelectorAll('.close').forEach((closeBtn) => {
+        closeBtn.addEventListener('click', function() {
+            const modalId = this.getAttribute('data-modal');
+            document.getElementById(modalId).style.display = 'none';
+        });
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = 'none';
+        }
+    });
+</script>
+</html>
