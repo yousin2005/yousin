@@ -36,7 +36,7 @@ public class SecurityConfig  {
                         .ignoringRequestMatchers("/logout")
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/code", "/login", "/*.html", "/css/*", "/img/*", "/sub/*.html").permitAll() // 모든 요청을 허용
+                        .requestMatchers("/","/*", "/code", "/login", "/*.html", "/css/*", "/img/*", "/sub/*.html").permitAll() // 모든 요청을 허용
                         .requestMatchers("/info/**", "/sub/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/admin/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
