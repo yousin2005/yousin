@@ -13,12 +13,24 @@
     <br/>
 
     <select id="day">
+        <option value="3" >3</option>
         <option value="7" >7</option>
+        <option value="28" >28</option>
         <option value="30" >30</option>
+        <option value="56" >56</option>
         <option value="60" >60</option>
+        <option value="84" >84</option>
         <option value="90" >90</option>
+        <option value="140" >140</option>
+        <option value="168" >168</option>
         <option value="180" >180</option>
-        <option value="365" >365</option>
+        <option value="196" >196</option>
+        <option value="224" >224</option>
+        <option value="252" >252</option>
+        <option value="280" >280</option>
+        <option value="308" >308</option>
+        <option value="336" >336</option>
+        <option value="364" >364</option>
     </select>
 
     <br/>
@@ -137,10 +149,24 @@
                     // 데이터에 대한 처리 로직을 여기에 추가
                     const token = data["token"];
                     document.getElementById('SHOW_TOKEN').innerText =
+                        "안녕하세요.\n" +
+                        "저희 유신예상종합지를 구매해 주셔서\n" +
+                        "대단히 감사합니다.\n" +
+                        "\n" +
+                        "1. 발급된 쿠폰 번호를 복사해 주세요.\n" +
                         token.substring(0,4) + "-" +
                         token.substring(4,8) + "-" +
                         token.substring(8,12) + "-" +
-                        token.substring(12,16);
+                        token.substring(12,16) + "\n" +
+                        "\n" +
+                        "2. 아래 홈페이지에 코드번호를 입력\n" +
+                        "    https://yousin.co.kr/\n" +
+                        "\n" +
+                        "3. 사용기한 :  "+ document.getElementById('day').value +"일\n" +
+                        "*쿠폰번호 입력시 사용기한 바로 적용\n" +
+                        "\n" +
+                        "★★고객님의 매경주 건승을 응원합니다.★★"
+                        ;
 
                 })
                 .catch(error => {
