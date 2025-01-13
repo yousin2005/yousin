@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <title>유신예상종합지</title>
@@ -20,19 +20,45 @@
     <style>
 
 	footer {clear:both;}
-
-	@media ( max-width: 1920px ) {
-		.wrap { margin-top:5vw; }
-	}
-	@media ( max-width: 1200px ) {
-		.wrap { margin-top:15vw; }
-	}
-
-	@media ( max-width: 768px ) {
-		.wrap { margin-top:43vw; }
-	}
-
 	.po_r{position:relative;}
+
+
+			/* Pc  */
+			@media only screen and (max-width: 1920px) {
+
+				.wrap { margin-top: 5vw; }
+				.header_sub {height: 15vw;}
+				.tab-slider-content > div:first-child {margin-top: 12vw;}
+				.name02 {font-size: 2vw;}
+				.name03 {font-size: 1.2vw;}
+
+			}
+
+			@media ( max-width: 1200px ) {
+				.wrap { margin-top: 15vw; }
+			}
+
+			/* Table */
+			@media ( max-width: 768px ) {
+				.wrap { margin-top: 43vw; }
+			}
+
+			/* Mobile  */
+			@media only screen and (max-width: 640px) {
+
+				.header_sub {height: 33vw;}
+				.name02 {font-size: 5vw;}
+				.name03 {font-size: 3.5vw;}
+
+			}
+
+			@media only screen and (max-width: 360px) {
+
+				.header_sub {height: 33vw;}
+
+			}
+
+
 
     </style>
 
@@ -41,11 +67,11 @@
 <body class="shop">
 <div class="overlay" onclick="toggleMenu()"></div>
     <div class="menu">
-        <a href="/sub/dep.html"><span class="green"> 사용설명서</span>바로가기</a><br />
-        <a href="/sub/hit.html"><span class="green"> 지난경주</span>바로가기</a><br />
-	    <a href="/code"><span class="green"> 유신예상종합지</span>다운받기</a><br />
+        <a href="../sub/dep"><span class="green"> 사용설명서</span>바로가기</a><br />
+        <a href="../sub/hit"><span class="green"> 지난경주</span>바로가기</a><br />
+	    <a href="../code"><span class="green"> 유신예상종합지</span>다운받기</a><br />
         <a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span>준비중</a><br />
-	    <a href="/sub/info.html"><span class="green"> 판매처 등록</span>바로가기</a>
+	    <a href="../sub/info"><span class="green"> 판매처 등록</span>바로가기</a>
 	</div>
 
 <div class="hamburger-menu" onclick="toggleMenu()">
@@ -241,22 +267,26 @@
 		</div>
 	</div>
 
-	<footer>
-		<div class="wrap">
-				<br /><p class="f_logo_tit">유신예상종합지</p><br/>
-				<span>
-				주소 : 서울특별시 강남구 봉은사로 44길 78 옥암빌리지<br />
-				대표 : 장성인 | Email : yousin_2005@naver.com<br />
-				사업자 등록번호 : 458-31-01594  |  통신판매업신고 : 2024-서울강남-06219<br />
-				호스팅제공자 : &copy; Cafe24 Corp. All Rights Reserved.</span><br/><br/>
-		</div>
-	</footer>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            if (menu.style.display === "
-	</script>
+	<div th:replace="include/footer.html :: footer"></div>
+
+
+<script>
+	function toggleMenu() {
+		var overlay = document.querySelector('.overlay');
+		var menu = document.querySelector('.menu');
+		var hamburger = document.querySelector('.hamburger-menu');
+		if (overlay.style.display === "block") {
+			overlay.style.display = "none";
+			menu.style.display = "none";
+			hamburger.classList.remove('change');
+		} else {
+			overlay.style.display = "block";
+			menu.style.display = "block";
+			hamburger.classList.add('change');
+		}
+	}
+</script>
 
 <script>
     // 탭 클릭 시 해당 콘텐츠로 스크롤

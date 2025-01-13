@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:type" content="website"> 
 <meta property="og:title" content="유신예상종합지">
 <meta property="og:description" content="안녕하세요. 유신예상종합지입니다.">
-<meta property="og:image" content="http://yousin.co.kr/img/yousin_favicon.ico">
+<link rel="shortcut icon" href="../img/yousin_favicon.ico">
 <meta property="og:url" content="http://yousin.co.kr">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo&display=swap">
@@ -25,6 +25,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="keywords" content="유신,유신지,유신종합지,유신예상지,유신종합예상지,유신예상종합지,예상지,종합지,종합예상지,예상종합지,마필,조교,기수,조교상태,선행,선입,추입,자유,대박,쌍승,복승,복연승,단승,삼복승,삼쌍승,단방,축마,꼬리마,사행,상위마,경주의법칙,축마예상,혼전경주,복병마,능력지수,고배당,초고배당,증감,경주순위">
 <meta name="Description" content="안녕하세요. 유신예상종합지입니다." />
 <style>
+
 </style>
 <script>
 	function showPdfFile(fileDay){
@@ -79,11 +80,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="overlay" onclick="toggleMenu()"></div>
     <div class="menu">
-		<a href="/sub/dep.html"><span class="green"> 사용설명서</span>바로가기</a><br />
-        <a href="/sub/hit.html"><span class="green"> 지난경주</span>바로가기</a><br />
-        <a href="/sub/shop.html"><span class="green"> 전국 판매처</span>바로가기</a><br />
-        <a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span>준비중</a><br />
-	    <a href="/sub/info.html"><span class="green"> 판매처 등록</span>바로가기</a>
+		<a href="../sub/hit"><span class="green"> 지난경주</span>바로가기</a><br />
+		<a href="https://m.smartstore.naver.com/yousin2005"><span class="green"> 유신예상종합지</span>다운받기</a><br />
+		<a href="../sub/shop"><span class="green"> 전국 판매처</span>바로가기</a><br />
+		<a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span>준비중</a><br />
+		<a href="../sub/info"><span class="green"> 판매처 등록</span>바로가기</a>
 	</div>
 <div class="hamburger-menu" onclick="toggleMenu()">
     <div class="line line01"></div>
@@ -104,7 +105,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<!-- a href="#" onclick="return false;" class="logo"><img src="../img/logo_paid.jpg" alt="로고 이미지" style="margin-top: 0px;"></a -->
 		<a href="#" onclick="return false;" class="logo"><img src="../img/sub_logo5.jpg" alt="로고 이미지"></a>
 	</div>
+	<div class="wrap" th:if="${PdfFile['Friday'] == null && PdfFile['Saturday'] == null && PdfFile['Sunday'] == null}" >
+		<div class="con_01">
+			<p class="paid_txt_01">금주 종합지는 준비 중입니다.</p>
+			<p class="paid_txt_02"><span style="color:#ff4545; font-weight: 500;">*자세한 사항은 필독사항을 확인 해주세요</span></p>
+		</div>
 
+		<div class="con_04">
+			<p style="font-size: 20px; margin-top: 34px; color: #47474e; font-weight: bold;" th:text="@{'사용기한 : ' + ${TokenDays['StartDay']} + '~' + ${TokenDays['EndDay']}}"> : 2024.12.27~2024.01.24</p>
+			<div class="sub02_bottom">	<a href="//smartstore.naver.com/yousin2005" class="btn_green" id="chargeButton" style="color: black;line-height: 53px;background: #9ccc3c;">쿠폰 추가 구매</a></div>
+			<div class="sub02_bottom">	<a href="#" class="btn_green" id="outButton" onclick="logout();" style="color: black;line-height: 53px;background: #e0f2cc;">쿠폰 해체</a></div>
+			<div class="sub02_bottom">	<a href="../sub/hit" class="btn_green" id="chargeButton2" style="color: black;background: #e0f2cc;line-height: 53px;">지난 경주 보기</a></div>
+		</div>
+
+		<div class="con_03">
+			<p class="con03_txt" >필독사항</p>
+			<ul class="con03_info">
+				<li>· 5회 이상 PDF 파일 다운로드시 이상 접근으로 간주하여 이용이 제한되며</li>
+				&nbsp;&nbsp;추가 구매후 이용 바랍니다.</li>
+				<li>· 구매 방법 : 네이버 스마트 스토어에서 구매 진행 하시면 됩니다.</li>
+				<li>· 이전 날짜 유신예상종합지는 지난 경주 다시보기 메뉴에 있습니다.</li>
+			</ul>
+		</div>
+	</div>
 	<div class="wrap" th:if="${PdfFile['Friday'] != null || PdfFile['Saturday'] != null || PdfFile['Sunday'] != null}" >
 		<div class="con_01">
 			<p class="paid_txt_01">PDF파일 다운받기<br /><span style="color:#ff4545">최대 5회까지 가능합니다</span></p>
@@ -136,7 +159,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<p style="font-size: 20px; margin-top: 34px; color: #47474e; font-weight: bold;" th:text="@{'사용기한 : ' + ${TokenDays['StartDay']} + '~' + ${TokenDays['EndDay']}}"> : 2024.12.27~2024.01.24</p>
 			<div class="sub02_bottom">	<a href="//smartstore.naver.com/yousin2005" class="btn_green" id="chargeButton" style="color: black;line-height: 53px;background: #9ccc3c;">쿠폰 추가 구매</a></div>
 			<div class="sub02_bottom">	<a href="#" class="btn_green" id="outButton" onclick="logout();" style="color: black;line-height: 53px;background: #e0f2cc;">쿠폰 해체</a></div>
-			<div class="sub02_bottom">	<a href="/sub/hit.html" class="btn_green" id="chargeButton2" style="color: black;background: #e0f2cc;line-height: 53px;">지난 경주 보기</a></div>
+			<div class="sub02_bottom">	<a href="../sub/hit" class="btn_green" id="chargeButton2" style="color: black;background: #e0f2cc;line-height: 53px;">지난 경주 보기</a></div>
 		</div>   
 
 		<div class="con_03">
@@ -145,23 +168,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<li>· 5회 이상 PDF 파일 다운로드시 이상 접근으로 간주하여 이용이 제한되며</li>
 				&nbsp;&nbsp;추가 구매후 이용 바랍니다.</li>
 				<li>· 구매 방법 : 네이버 스마트 스토어에서 구매 진행 하시면 됩니다.</li>
-				<!--
 				<li>· 이전 날짜 유신예상종합지는 지난 경주 다시보기 메뉴에 있습니다.</li>
-				-->
 			</ul>
 		</div>
 	</div>
 
-	<footer>
-		<div class="wrap">
-				<br /><p class="f_logo_tit">유신예상종합지</p><br/>
-				<span>
-				주소 : 서울특별시 강남구 봉은사로 44길 78 옥암빌리지<br />
-				대표 : 장성인 | Email : yousin_2005@naver.com<br />
-				사업자 등록번호 : 458-31-01594  |  통신판매업신고 : 2024-서울강남-06219<br />
-				호스팅제공자 : &copy; Cafe24 Corp. All Rights Reserved.</span><br/><br/>
-		</div>
-	</footer>
+	<div th:replace="include/footer.html :: footer"></div>
 
 <script>
 function toggleMenu() {

@@ -1,0 +1,73 @@
+<footer th:fragment="footer">
+
+	<style>
+
+		@media only screen and (max-width: 1920px) {
+
+			div.Btn {position: absolute;right: 9vw;top: 1vw;}
+			div.Btn img {max-width: 80%;}
+			#profgreeting {display: none;}
+
+		}
+
+
+		@media only screen and (max-width: 640px) {
+
+			div.Btn {right: 23vw;top: 3.1vw;}
+			div.Btn img {max-width: 50%;}
+
+		}
+
+
+		@media only screen and (max-width: 360px) {
+
+			div.Btn {right: 22vw;top: 5vw;}
+
+		}
+
+		@media only screen and (max-width: 320px) {
+
+			div.Btn {right: 22vw;top: 6vw;}
+
+		}
+	</style>
+
+	<script>
+		function toggleProfInfo(elementId) {
+			var profGreeting = document.getElementById(elementId);
+			var arrowImg = document.getElementById('arrowImg');
+			if (profGreeting.style.display === "block") {
+				profGreeting.style.display = "none";
+				arrowImg.src = "../img/arrow_prof_b_open.png";
+			} else {
+				profGreeting.style.display = "block";
+				arrowImg.src = "../img/arrow_prof_b_close.png";
+			}
+		}
+	</script>
+
+	<div class="wrap">
+
+		<div class="Btn" onclick="toggleProfInfo('profgreeting')">
+			<img id="arrowImg" src="../img/arrow_prof_b_open.png" alt="더보기" />
+		</div>
+
+		<br /><a href="../index.html"><img src="../img/yousin_footer-logo_250108.png" alt="Image 1"></a><br/><br />
+		<span id="profgreeting">
+				유신예상종합지 대표 : 장성인<br/>
+				사업장주소 : 서울특별시 강남구 봉은사로 44길 78 옥암빌리지<br/>
+				개인정보보호책임자 : 장성인(yousin_2005@naver.com)<br/>
+				사업자등록번호 : 458-31-01594  통신판매업신고 : 2024-서울강남-06219<br/>
+				호스팅제공자 : 카페24(주)<br/><br/>
+		    </span>
+		<p>Copyright ⓒ 2005-2025 Yousin. All Rights Reserved.</p>
+
+		<ul class="f_social_box">
+			<li><a href="//smartstore.naver.com/yousin2005" target="_blank"><img src="../img/footer-naver-shop-icon.png" alt="네이버스토어"><span>스토어</span></a></li>
+			<li><a href="//blog.naver.com/yousin_2005" target="_blank"><img src="../img/footer-naver-blog-icon.png" alt="네이버블로그"><span>블로그</span></a></li>
+			<li><a href="//www.youtube.com/@yousin2005" target="_blank"><img src="../img/footer-youtube-icon.png" alt="유튜브"><span>유튜브</span></a></li>
+			<li><a href="//talk.naver.com/W5ITNB" target="_blank"><img src="../img/footer-naver-talk-icon.png" alt="네이버톡톡"><span>톡톡</span></a></li>
+		</ul>
+	</div>
+
+</footer>
