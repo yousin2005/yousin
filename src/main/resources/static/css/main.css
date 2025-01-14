@@ -64,6 +64,56 @@ footer .wrap img {max-width:30%;}
 #main_con_box2 .box3{width:49%; float:left;}
 #main_con_box2 .box4{width:50%; float:right;}
 
+
+/* 유료페이지 */
+#paid .wrap{width:90%; margin:0px auto; text-align: center;}
+#paid .con_01{margin-top:36px;}
+#paid .paid_txt_01{font-size: 28px; font-weight: 700; line-height: 30px; letter-spacing: -1.5px;}
+#paid .paid_txt_02{font-size:14px;margin: 5px 0px 40px; color: red; font-weight: 300; line-height:12px; letter-spacing: -1px;} 
+
+#paid .con_02{display: flex; flex-direction: column; gap: 10px; margin-top:28px;}
+#paid .con02_btn{display: flex; justify-content: space-between; align-items: center;width:100%;}
+#paid .con02_btn a,.con02_txt p {flex: 1; text-align: center;}
+#paid .con02_btn a {margin: 0 5px; padding: 24px 10px; text-decoration: none; border-radius: 20px; color: #fff; font-size: 26px; font-weight: 700; letter-spacing: -1px;}
+#paid .con02_btn a span{font-size:18px ;display: block; letter-spacing: -1px; line-height: 30px;}
+#paid .btn01{background-color: #47484d;}
+#paid .btn02{background-color: #288dff;}
+#paid .btn03{background-color: #ff4546;}
+
+#paid .con02_txt{display: flex; justify-content: space-between; align-items: center; margin-top: -12px; width:100%;}
+#paid .con02_txt p { margin: 0 5px; padding: 10px 14px 0px; font-size:20px; font-weight: 700; letter-spacing: -1px; line-height: 30px;}
+#paid .con02_txt p span{font-size:20px ;display: block; font-weight: 700;color:#47474e; letter-spacing: -1px;}
+
+#paid .con_03{margin-top: 20px; border-top: 1px solid #9ccc3c;}
+#paid .con03_txt{color: red; margin: 12px 0px 6px; font-weight: 700; font-size: 18px; letter-spacing: -1px;}
+#paid .con03_info{ font-size: 12px; font-weight: 300; text-align: left; letter-spacing: -1px;}
+#paid .con03_info li{list-style: none;}
+
+.sub02_bottom a {
+    text-align: center;
+    display: block;
+	text-align: center;
+    line-height: 49px;
+    width: 100%;
+    border-radius: 90px;
+    margin-top: 8px;
+    background-color: #9ccc3c;
+    border: none;
+    color: white;
+    cursor: pointer;
+    height: 55px;
+    font-size: 26px;
+	font-weight: 700;
+	letter-spacing: -1px;}
+/* //유료페이지 */
+
+/* 네이버 사용방법*/
+.n_01{ font-size: 15px; font-weight: 600;}
+.n_02{display: block; background: #9ccc3c; padding: 14px 0; font-size: 25px; font-weight: 700; color: #000; margin: 10px 0px 30px; border-radius: 24px;}
+/* //네이버 사용방법*/
+
+
+
 /* ����� ��Ÿ�� */
     .hamburger-menu {
         width: 48px;
@@ -205,6 +255,9 @@ footer .wrap img {max-width:30%;}
 		.box4{background:#e0f1cc url(../img/arrow.png) no-repeat 96% 50%;}
 		.box5{background:#e0f1cc url(../img/arrow.png) no-repeat 96% 50%;}
 
+		/* 유료페이지 */
+		#paid .wrap {width:640px;}
+
 		/* index --- 공지사항 Slide */
 		.marquee-container {
 		  width: 640px;
@@ -294,6 +347,9 @@ footer .wrap img {max-width:30%;}
 
 @media only screen and (max-width: 640px) {
 
+		/* 유료페이지 */
+		#paid .wrap {width:90%;}
+
 		.hamburger-menu {top: 11vw; right: 20px;}
 		.back { left: 5vw;top: 11vw;}
 		.menu {font-size: 6vw; width: 80%;top: 0;right: 0;}
@@ -373,54 +429,6 @@ footer .wrap img {max-width:30%;}
 	.ad01 {width: 90%;}
 	.footer-logo {width: 90%;}
 }
-
-/* 유료페이지 */
-#paid .wrap{width:90%; margin:0px auto; text-align: center;}
-#paid .con_01{margin-top:36px;}
-#paid .paid_txt_01{font-size: 28px; font-weight: 700; line-height: 30px; letter-spacing: -1.5px;}
-#paid .paid_txt_02{font-size:14px;margin: 5px 0px 40px; color: red; font-weight: 300; line-height:12px; letter-spacing: -1px;} 
-
-#paid .con_02{display: flex; flex-direction: column; gap: 10px; margin-top:28px;}
-#paid .con02_btn{display: flex; justify-content: space-between; align-items: center;width:100%;}
-#paid .con02_btn a,.con02_txt p {flex: 1; text-align: center;}
-#paid .con02_btn a {margin: 0 5px; padding: 24px 10px; text-decoration: none; border-radius: 20px; color: #fff; font-size: 26px; font-weight: 700; letter-spacing: -1px;}
-#paid .con02_btn a span{font-size:18px ;display: block; letter-spacing: -1px; line-height: 30px;}
-#paid .btn01{background-color: #47484d;}
-#paid .btn02{background-color: #288dff;}
-#paid .btn03{background-color: #ff4546;}
-
-#paid .con02_txt{display: flex; justify-content: space-between; align-items: center; margin-top: -12px; width:100%;}
-#paid .con02_txt p { margin: 0 5px; padding: 10px 14px 0px; font-size:20px; font-weight: 700; letter-spacing: -1px; line-height: 30px;}
-#paid .con02_txt p span{font-size:20px ;display: block; font-weight: 700;color:#47474e; letter-spacing: -1px;}
-
-#paid .con_03{margin-top: 20px; border-top: 1px solid #9ccc3c;}
-#paid .con03_txt{color: red; margin: 12px 0px 6px; font-weight: 700; font-size: 18px; letter-spacing: -1px;}
-#paid .con03_info{ font-size: 12px; font-weight: 300; text-align: left; letter-spacing: -1px;}
-#paid .con03_info li{list-style: none;}
-
-.sub02_bottom a {
-    text-align: center;
-    display: block;
-	text-align: center;
-    line-height: 49px;
-    width: 100%;
-    border-radius: 90px;
-    margin-top: 8px;
-    background-color: #9ccc3c;
-    border: none;
-    color: white;
-    cursor: pointer;
-    height: 55px;
-    font-size: 26px;
-	font-weight: 700;
-	letter-spacing: -1px;}
-/* //유료페이지 */
-
-/* 네이버 사용방법*/
-.n_01{ font-size: 15px; font-weight: 600;}
-.n_02{display: block; background: #9ccc3c; padding: 14px 0; font-size: 25px; font-weight: 700; color: #000; margin: 10px 0px 30px; border-radius: 24px;}
-/* //네이버 사용방법*/
-
 
 
 
