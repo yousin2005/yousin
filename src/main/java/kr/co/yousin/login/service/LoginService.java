@@ -48,14 +48,15 @@ public class LoginService implements UserDetailsService {
                 throw new AccountExpiredException("AccountExpired");
             }
         }
+        tokenRepository.updaetLastAccessDate(userToken.getToken(), now);
 
-        //TODO  로그인 시간 추가 필요
         List<GrantedAuthority> authorityList = new ArrayList<>();
         authorityList.add(new SimpleGrantedAuthority(userToken.getRole().name()));
 
-        UserDetails user = new User(userToken.getToken(), "{noop}", authorityList);
-        //return new User(userToken.getToken(), "{noop}", authorityList);
-        return user;
+        return new User(userToken.getToken(), "{noop}", authorityList);
+
+        //UserDetails user = new User(userToken.getToken(), "{noop}", authorityList);
+        //return user;
     }
 
 }

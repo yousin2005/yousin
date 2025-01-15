@@ -50,7 +50,7 @@ public class LoginController {
             try {
                 // 요일/시간 조건에 맞지 않을 경우 경고 메시지와 리다이렉트
                 response.setContentType("text/html; charset=UTF-8");
-                response.getWriter().write("<script>alert('서비스 이용시간이 아닙니다. \n(서비스 시간 : 목요일 12시 ~ 일요일 24시)'); location.href='/';</script>");
+                response.getWriter().write("<script>alert('서비스 이용시간이 아닙니다. \\n(서비스 시간 : 목요일 12시 ~ 일요일 24시)'); location.href='/';</script>");
                 response.getWriter().flush();
             }catch (IOException e){
                 e.printStackTrace();

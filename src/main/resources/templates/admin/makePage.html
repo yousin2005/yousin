@@ -5,6 +5,36 @@
     <title>Title</title>
     <meta name="_csrf" th:content="${_csrf.token}">
     <meta name="_csrf_header" th:content="${_csrf.headerName}">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .pagination button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
+
 </head>
 <body>
     <div id="SHOW_TOKEN"></div>
@@ -78,6 +108,29 @@
         </tbody>
     </table>
 
+    <br/>
+    <br/>
+    <h1>사용자 정보</h1>
+    <table id="userTable">
+        <thead>
+        <tr>
+            <th>토큰</th>
+            <th>유효기간</th>
+            <th>최초접속일</th>
+            <th>마지막접속일</th>
+            <th>토큰 생성날자</th>
+            <th>토큰 생성IP (관리자IP)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Users will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <button id="prevPage" disabled>&lt; Previous</button>
+        <button id="nextPage">Next &gt;</button>
+    </div>
 <!--
     <form action="/admin/upload" method="post" enctype="multipart/form-data">
         입력 날짜 : <input type="date" name="saveDate" >
@@ -90,9 +143,103 @@
     </form>
 -->
     <script>
-        function deletePdfFile(delFileDay){
 
-            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+        let currentPage = 0;
+        const pageSize = 10;
+
+        const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+
+        // Function to fetch and display users
+        async function fetchUsers(page) {
+
+            const response = await fetch('/admin/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ page: page, size: pageSize })
+            });
+
+            if (!response.ok) {
+                alert("Failed to fetch users");
+                return;
+            }
+
+            const data = await response.json();
+            renderTable(data.content);
+
+            document.getElementById('prevPage').disabled = page === 0;
+            document.getElementById('nextPage').disabled = data.last;
+        }
+
+        // Function to render the table
+        function renderTable(users) {
+            const tableBody = document.querySelector('#userTable tbody');
+            tableBody.innerHTML = ''; // Clear previous data
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${formatToken(user.token)}</td>
+                    <td>${user.periodValidity}</td>
+                    <td>${formatDate(user.initialAccessDate)}</td>
+                    <td>${formatDate(user.lastAccessDate)}</td>
+                    <td>${formatDate(user.createdDate)}</td>
+                    <td>${user.createIP}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        function formatVal(val) {
+            if (!val) return ""; // null 또는 undefined 처리
+            return val;
+        }
+        function formatToken(token) {
+
+            if (!token) return ""; // null 또는 undefined 처리
+
+            if (token.length !== 16) {
+                return token; // ID가 16자리가 아닌 경우 그대로 반환
+            }
+            return `${token.slice(0, 4)}-${token.slice(4, 8)}-${token.slice(8, 12)}-${token.slice(12, 16)}`;
+        }
+
+        function formatDate(dateString) {
+
+            if (!dateString) return ""; // null 또는 undefined 처리
+
+            const date = new Date(dateString); // 날짜 문자열을 Date 객체로 변환
+
+            // '2025-01-15T21:49:19' 형식에서 '2025-01-15 21:49:19'로 변환
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+
+            // 포맷팅된 날짜 문자열 반환
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+        // Event listeners for pagination buttons
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage -= 1;
+                fetchUsers(currentPage);
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            currentPage += 1;
+            fetchUsers(currentPage);
+        });
+
+
+        // Initial fetch
+        fetchUsers(currentPage);
+
+        function deletePdfFile(delFileDay){
 
             fetch('/admin/deletePdf', {
                 method: 'POST',
@@ -126,8 +273,6 @@
         }
 
         document.getElementById('sendRequest').addEventListener('click', function() {
-
-            const csrfToken = document.querySelector('meta[name="_csrf"]').content;
 
             fetch('/admin/makeToken', {
                 method: 'POST',
@@ -169,6 +314,8 @@
                         "★★고객님의 매경주 건승을 응원합니다.★★"
                         ;
 
+                    currentPage = 0;
+                    fetchUsers(currentPage);
                 })
                 .catch(error => {
                     // 요청이 실패하거나 에러가 발생했을 때

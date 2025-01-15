@@ -6,6 +6,7 @@ import kr.co.yousin.util.Util;
 import kr.co.yousin.vo.UserToken;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -72,9 +73,24 @@ public class MakeController {
         return makeService.saveUploadPdfFile(saveDate, uploadFile, Util.getClientIp(request));
     }
 
+    @PostMapping("users")
+    public ResponseEntity<Page<UserToken>> getUsers(@RequestBody Map<String, Object> params) {
+        int page = 0;
+        if(params.get("page") != null){
+            page = (int)params.get("page");
+        }
+        int size = 10;
+        if(params.get("size") != null){
+            size = (int)params.get("size");
+        }
+
+        Page<UserToken> users = makeService.getUsers(page, size);
+        return ResponseEntity.ok(users); // JSON 형식으로 반환
+    }
+
     @PostMapping("deletePdf")
     @ResponseBody
-    public String handlePdfFileDelete(HttpServletRequest request, @RequestBody Map<String, Object> params)  {
+    public String handlePdfFileDelete(@RequestBody Map<String, Object> params)  {
 
         return makeService.deletePdfFile((String)params.get("deletePdfDate"));
     }
