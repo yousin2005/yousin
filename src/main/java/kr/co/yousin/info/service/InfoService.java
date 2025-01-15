@@ -109,28 +109,81 @@ public class InfoService {
         try {
 
             String currentDir = new File(".").getCanonicalPath();
-                    //File.separator + (new File(".")).getCanonicalPath() + File.separator + "tomcat" + File.separator + "temp";
 
             // 업로드 디렉토리 경로 생성
-            Path uploadDir = Paths.get(currentDir, "tomcat", "temp");
+            Path uploadDir = Paths.get(new File(currentDir).getParent(), "temp");
 
             // 파일 경로 생성
             Path filePath = uploadDir.resolve("yousin_" + fileDay + ".pdf");
+            File file = filePath.toFile();
 
-            // 파일 조회 카운트 증가
-            if(fileCnt == 0){
-                UserPdfInfo userPdfInfo = new UserPdfInfo();
-                userPdfInfo.setToken(token);
-                userPdfInfo.setFileDay(fileDay);
-                userPdfInfo.setShowCnt(1);
-                userPdfInfo.setCreatedDate(LocalDateTime.now());
+            if(file.isFile()){
+                // 파일 조회 카운트 증가
+                if(fileCnt == 0){
+                    UserPdfInfo userPdfInfo = new UserPdfInfo();
+                    userPdfInfo.setToken(token);
+                    userPdfInfo.setFileDay(fileDay);
+                    userPdfInfo.setShowCnt(1);
+                    userPdfInfo.setCreatedDate(LocalDateTime.now());
 
-                userPdfInfoRepository.save(userPdfInfo);
+                    userPdfInfoRepository.save(userPdfInfo);
+
+                    //1회권 확인
+                    Optional<UserToken> _userToken = tokenRepository.findByToken(token);
+
+                    if(_userToken != null && _userToken.isPresent()){
+                        UserToken userToken = _userToken.get();
+
+                        int periodValidity = userToken.getPeriodValidity();
+
+                        // 1회 권인 경우 다른 날짜 차단
+                        if(periodValidity == 1){
+                            // 현재 날짜 가져오기
+                            LocalDate today = LocalDate.now();
+
+                            LocalDate friday = today.with(DayOfWeek.FRIDAY);
+                            LocalDate saturday = today.with(DayOfWeek.SATURDAY);
+                            LocalDate sunday = today.with(DayOfWeek.SUNDAY);
+
+                            // 날짜 포맷터
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                            // 포맷된 날짜 출력
+                            String formattedFriday = friday.format(formatter);
+                            String formattedSaturday = saturday.format(formatter);
+                            String formattedSunday = sunday.format(formatter);
+
+                            userPdfInfo.setShowCnt(5);
+
+                            if(!fileDay.equals(formattedFriday)){
+                                userPdfInfo.setFileDay(formattedFriday);
+                                userPdfInfoRepository.save(userPdfInfo);
+                            }
+                            if(!fileDay.equals(formattedSaturday)){
+                                userPdfInfo.setFileDay(formattedSaturday);
+                                userPdfInfoRepository.save(userPdfInfo);
+                            }
+                            if(!fileDay.equals(formattedSunday)){
+                                userPdfInfo.setFileDay(formattedSunday);
+                                userPdfInfoRepository.save(userPdfInfo);
+                            }
+                        }
+                    }
+                   
+                }else{
+                    userPdfInfoRepository.updateShowCnt(token, fileDay);
+                }
+
+                
+
+
+                return filePath;
             }else{
-                userPdfInfoRepository.updateShowCnt(token, fileDay);
+                return null;
             }
+
             
-            return filePath;
+
         }catch (IOException e){
             e.printStackTrace();
             return null;

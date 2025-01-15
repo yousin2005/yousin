@@ -3,6 +3,8 @@ package kr.co.yousin.info.controller;
 import jakarta.servlet.http.HttpServletResponse;
 import kr.co.yousin.info.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,18 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Controller
 @RequestMapping("/info/")
@@ -56,7 +51,7 @@ public class InfoController {
     }
 
     @GetMapping("downloadPdf")
-    public ResponseEntity<Resource> downloadFile(HttpServletResponse response, @RequestParam String fileDay) {
+    public ResponseEntity<Resource> downloadFile(@RequestParam String fileDay) {
 
         String userToken = "";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -75,20 +70,17 @@ public class InfoController {
 
                 Path filePath = infoService.getFilePath(userToken, fileDay, checkNum);
                 File file = filePath.toFile();
+                Resource resource = new FileSystemResource(file);
 
-                response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename=\"" + fileDay + ".pdf\"");
-                response.setContentLengthLong(file.length());
+                // 응답 헤더 설정
+                HttpHeaders headers = new HttpHeaders();
+                headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDay + ".pdf\"");
+                headers.setContentType(org.springframework.http.MediaType.APPLICATION_PDF);
+                headers.setContentLength(file.length());
 
-                try (InputStream inputStream = new FileInputStream(file);
-                     OutputStream outputStream = response.getOutputStream()) {
-                    byte[] buffer = new byte[1024];
-                    int bytesRead;
-                    while ((bytesRead = inputStream.read(buffer)) != -1) {
-                        outputStream.write(buffer, 0, bytesRead);
-                    }
-                    outputStream.flush();
-                }
+                return ResponseEntity.ok()
+                        .headers(headers)
+                        .body(resource);
                 /*
                 // Replace this with the actual file path
                 Path filePath = infoService.getFilePath(userToken, fileDay, checkNum);

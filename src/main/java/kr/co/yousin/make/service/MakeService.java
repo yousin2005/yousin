@@ -11,12 +11,13 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.SecureRandom;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -74,7 +75,14 @@ public class MakeService {
     public String deletePdfFile(String deletePdfDate) {
         if(deletePdfDate != null && !deletePdfDate.isEmpty()){
             try {
-                String pdfUploadDir = File.separator + (new File(".")).getCanonicalPath() + File.separator + "tomcat" + File.separator + "temp";
+
+                String currentDir = new File(".").getCanonicalPath();
+
+                // 파일을 지정된 경로에 저장
+                Path uploadDir = Paths.get(new File(currentDir).getParent(), "temp");
+
+                String pdfUploadDir = uploadDir.toString();
+
                 File pdfFile = new File(pdfUploadDir + File.separator + "yousin_" + deletePdfDate + ".pdf");
 
                 if(pdfFile.isFile()){
@@ -97,8 +105,12 @@ public class MakeService {
 
         try {
 
+            String currentDir = new File(".").getCanonicalPath();
+
             // 파일을 지정된 경로에 저장
-            String pdfUploadDir = File.separator + (new File(".")).getCanonicalPath() + File.separator + "tomcat" + File.separator + "temp";
+            Path uploadDir = Paths.get(new File(currentDir).getParent(), "temp");
+
+            String pdfUploadDir = uploadDir.toString();
 
             File folderFile = new File(pdfUploadDir);
 
@@ -139,10 +151,15 @@ public class MakeService {
     public ResponseEntity<String> saveUploadFile(String saveDate, MultipartFile uploadFile) {
 
         try {
-            // 파일을 지정된 경로에 저장
-            String uploadDir = File.separator + (new File(".")).getCanonicalPath() + File.separator + "tomcat" + File.separator + "temp";
 
-            File folderFile = new File(uploadDir);
+            String currentDir = new File(".").getCanonicalPath();
+
+            // 파일을 지정된 경로에 저장
+            Path uploadDir = Paths.get(new File(currentDir).getParent(), "temp");
+
+            String pdfUploadDir = uploadDir.toString();
+
+            File folderFile = new File(pdfUploadDir);
 
             if( !folderFile.isDirectory() ){
                 folderFile.mkdirs();

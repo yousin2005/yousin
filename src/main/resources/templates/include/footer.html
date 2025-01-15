@@ -33,6 +33,11 @@
 	</style>
 
 	<script>
+
+		if (window.location.protocol === "http:" && !window.location.href.startsWith("http://localhost:8080")) {
+			window.location.href = window.location.href.replace("http:", "https:");
+		}
+
 		function toggleProfInfo(elementId) {
 			var profGreeting = document.getElementById(elementId);
 			var arrowImg = document.getElementById('arrowImg');
