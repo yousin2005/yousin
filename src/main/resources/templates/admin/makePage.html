@@ -42,7 +42,7 @@
     <br/>
     <br/>
 
-    <select id="day">
+    <select id="TOKEN_DAY">
         <option value="1" >1</option>
         <option value="3" >3</option>
         <option value="7" >7</option>
@@ -73,14 +73,15 @@
     <br/>
 
 
-    <form action="/admin/uploadpdf" method="post" enctype="multipart/form-data">
-        PDF <br/>
-        입력 날짜 : <input type="date" name="savePdfDate" >
-        <br/>
+    <form id="UPLOAD_FORM" action="/admin/uploadpdf" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_csrf" th:value="${_csrf.token}">
         <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}">
 
-        <input type="file" name="PdfFile" />
+        PDF
+        <br/>
+        입력 날짜 : <input   id="PDF_DATE" type="date" name="savePdfDate" >
+        <br/>
+        <input id="PDF_FILE"  type="file" name="PdfFile" />
         <button type="submit">엑셀 업로드</button>
     </form>
 
@@ -144,6 +145,152 @@
 -->
     <script>
 
+        document.getElementById('sendRequest').addEventListener('click', function() {
+
+            const tokenDay = document.getElementById('TOKEN_DAY').value
+
+            if(!tokenDay){
+                alert('수량 정보가 없습니다.');
+                return;
+            }
+
+            let tokenDayMsg = "3. 사용기한 :  " + tokenDay + "일\n";
+            let tokenInfoMsg = "*쿠폰번호 입력시 사용기한 바로 적용\n";
+
+            if(Number(tokenDay) === 1){
+                tokenDayMsg = "3. 사용기회 :  " + tokenDay + "회\n";
+                tokenInfoMsg = "*쿠폰번호 입력한 당일만 사용 가능\n";
+            }
+
+            fetch('/admin/makeToken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ day: tokenDay })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
+                        throw new Error('서버 요청 실패: ' + response.status);
+                    }
+                    return response.json(); // JSON 형태로 응답을 파싱
+                })
+                .then(data => {
+                    // 성공적으로 JSON 응답을 받았을 때
+                    console.log('서버 응답 데이터:', data);
+                    // 데이터에 대한 처리 로직을 여기에 추가
+                    const token = data["token"];
+                    document.getElementById('SHOW_TOKEN').innerText =
+                        "안녕하세요.\n" +
+                        "저희 유신예상종합지를 구매해 주셔서\n" +
+                        "대단히 감사합니다.\n" +
+                        "\n" +
+                        "1. 발급된 쿠폰 번호를 복사해 주세요.\n" +
+                        token.substring(0,4) + "-" +
+                        token.substring(4,8) + "-" +
+                        token.substring(8,12) + "-" +
+                        token.substring(12,16) + "\n" +
+                        "\n" +
+                        "2. 아래 홈페이지에 코드번호를 입력\n" +
+                        "    https://yousin.co.kr/\n" +
+                        "\n" +
+                        tokenDayMsg  +
+                        tokenInfoMsg +
+                        "\n" +
+                        "★★고객님의 매경주 건승을 응원합니다.★★"
+                    ;
+
+                    currentPage = 0;
+                    fetchUsers(currentPage);
+                })
+                .catch(error => {
+                    // 요청이 실패하거나 에러가 발생했을 때
+                    console.error('에러 발생:', error);
+                    // 에러 처리 로직을 여기에 추가
+                });
+
+        });
+
+        function checkDay(dateString) {
+
+            let date = -1;
+
+            if(dateString){
+                // 문자열을 Date 객체로 변환
+                date = new Date(dateString).getDay();
+            }
+
+            // Date 객체의 getDay() 메서드를 사용하여 요일 확인 (0: 일요일, 1: 월요일, ..., 6: 토요일)
+            return  date === 0 || date === 5 || date === 6;
+        }
+
+        document.getElementById('UPLOAD_FORM').addEventListener('submit', function(event) {
+            const dateInput = document.getElementById('PDF_DATE').value;
+            const fileInput = document.getElementById('PDF_FILE').files;
+
+            // 날짜 검증
+            if (!dateInput) {
+                alert('날짜를 입력해주세요.');
+                event.preventDefault(); // 제출 중단
+                return;
+            }
+
+            if(!checkDay(dateInput)){
+                alert('해당 날짜는 금,토,일요일이 아닙니다.');
+                event.preventDefault(); // 제출 중단
+                return;
+            }
+
+            if (fileInput.length === 0) {
+                alert('파일을 첨부해주세요.');
+                event.preventDefault(); // 제출 중단
+                return;
+            }
+
+            const fileName = fileInput[0].name; // 첨부된 파일 이름
+            const fileExtension = fileName.split('.').pop().toLowerCase(); // 확장자 추출 및 소문자로 변환
+            if (fileExtension !== 'pdf') {
+                alert('PDF 파일만 업로드 가능합니다.');
+                event.preventDefault(); // 제출 중단
+                // return;
+            }
+        });
+
+        function deletePdfFile(delFileDay){
+
+            fetch('/admin/deletePdf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ deletePdfDate: delFileDay })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
+                        throw new Error('서버 요청 실패: ' + response.status);
+                    }
+                    return response; // JSON 형태로 응답을 파싱
+                })
+                .then(data => {
+                    // 성공적으로 JSON 응답을 받았을 때
+                    console.log('서버 응답 데이터:', data);
+                    // 데이터에 대한 처리 로직을 여기에 추가
+                    alert("삭제 성공");
+
+                    location.reload();
+
+                })
+                .catch(error => {
+                    // 요청이 실패하거나 에러가 발생했을 때
+                    console.error('에러 발생:', error);
+                    // 에러 처리 로직을 여기에 추가
+                });
+        }
+
         let currentPage = 0;
         const pageSize = 10;
 
@@ -191,6 +338,7 @@
                 tableBody.appendChild(row);
             });
         }
+
         function formatVal(val) {
             if (!val) return ""; // null 또는 undefined 처리
             return val;
@@ -235,120 +383,9 @@
             fetchUsers(currentPage);
         });
 
-
         // Initial fetch
         fetchUsers(currentPage);
 
-        function deletePdfFile(delFileDay){
-
-            fetch('/admin/deletePdf', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
-                },
-                body: JSON.stringify({ deletePdfDate: delFileDay })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
-                        throw new Error('서버 요청 실패: ' + response.status);
-                    }
-                    return response; // JSON 형태로 응답을 파싱
-                })
-                .then(data => {
-                    // 성공적으로 JSON 응답을 받았을 때
-                    console.log('서버 응답 데이터:', data);
-                    // 데이터에 대한 처리 로직을 여기에 추가
-                    alert("삭제 성공");
-
-                    location.reload();
-
-                })
-                .catch(error => {
-                    // 요청이 실패하거나 에러가 발생했을 때
-                    console.error('에러 발생:', error);
-                    // 에러 처리 로직을 여기에 추가
-                });
-        }
-
-        document.getElementById('sendRequest').addEventListener('click', function() {
-
-            fetch('/admin/makeToken', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
-                },
-                body: JSON.stringify({ day: (document.getElementById('day').value) })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
-                        throw new Error('서버 요청 실패: ' + response.status);
-                    }
-                    return response.json(); // JSON 형태로 응답을 파싱
-                })
-                .then(data => {
-                    // 성공적으로 JSON 응답을 받았을 때
-                    console.log('서버 응답 데이터:', data);
-                    // 데이터에 대한 처리 로직을 여기에 추가
-                    const token = data["token"];
-                    document.getElementById('SHOW_TOKEN').innerText =
-                        "안녕하세요.\n" +
-                        "저희 유신예상종합지를 구매해 주셔서\n" +
-                        "대단히 감사합니다.\n" +
-                        "\n" +
-                        "1. 발급된 쿠폰 번호를 복사해 주세요.\n" +
-                        token.substring(0,4) + "-" +
-                        token.substring(4,8) + "-" +
-                        token.substring(8,12) + "-" +
-                        token.substring(12,16) + "\n" +
-                        "\n" +
-                        "2. 아래 홈페이지에 코드번호를 입력\n" +
-                        "    https://yousin.co.kr/\n" +
-                        "\n" +
-                        "3. 사용기한 :  "+ document.getElementById('day').value +"일\n" +
-                        "*쿠폰번호 입력시 사용기한 바로 적용\n" +
-                        "\n" +
-                        "★★고객님의 매경주 건승을 응원합니다.★★"
-                        ;
-
-                    currentPage = 0;
-                    fetchUsers(currentPage);
-                })
-                .catch(error => {
-                    // 요청이 실패하거나 에러가 발생했을 때
-                    console.error('에러 발생:', error);
-                    // 에러 처리 로직을 여기에 추가
-                });
-
-            /*
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/admin/makeToken', true);  // 요청 유형과 URL 설정
-
-            // 요청 헤더 설정 (필요 시)
-            xhr.setRequestHeader('Content-Type', 'application/json');
-
-            // 서버 응답 처리
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    console.log(xhr.responseText);  // 서버에서 받은 응답 처리
-                    var param = JSON.parse(xhr.responseText);
-                    var token = param["token"];
-                    document.getElementById('SHOW_TOKEN').innerText =
-                        token.substring(0,4) + "-" +
-                        token.substring(4,8) + "-" +
-                        token.substring(8,12) + "-" +
-                        token.substring(12,16);
-                }
-            };
-
-            // 서버로 보낼 데이터
-            var data = JSON.stringify({ day: (document.getElementById('day').value) });
-            xhr.send(data);  // 요청 전송
-            */
-        });
     </script>
 </body>
 </html>
