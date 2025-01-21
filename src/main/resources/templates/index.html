@@ -43,18 +43,8 @@
 				  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!-- 햄버거 메뉴 시작 -->
-<div class="overlay" onclick="toggleMenu()"></div>
-<div class="menu">
-	<a href="../sub/dep"><span class="green"> 설명서</span>보기</a><br />
-	<a href="../sub/hit"><span class="green"> 지난경주</span>보기</a><br />
-	<a href="code"><span class="green"> 유신예상종합지</span>다운받기</a><br />
-	<a href="../sub/naver_use"><span class="green"> 네이버</span>구매하기</a><br />
-	<!-- <a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span>준비중</a><br /> -->
-	<a href="../sub/shop"><span class="green"> 판매처</span>보기</a><br />
-	<a href="../sub/info"><span class="green"> 등록 문의</span>하기</a>
-</div>
-<!-- 핸버거 메뉴 끝  -->
+<!-- 햄버거 메뉴 -->
+<div th:replace="include/main_menu :: main_menu"></div>	
 
 <!-- 메인 gnb 시작 -->
 <div class="header">
@@ -70,6 +60,7 @@
 		<span class="notice"><strong style="color: #5c86f6"> [공지사항]</strong> 21주년 기념 페이지가 새단장 했습니다.</span>
 	</div>
 </div>
+<!-- 공지사항 Slide 끝 -->
 
 <br />
 <div id="main_con_box">
@@ -108,12 +99,6 @@
         <a href="https://www.youtube.com/@yousin2005">네이버 구매<br />
         </a>
     </div> -->
-</div>
-
-<div class="hamburger-menu" onclick="toggleMenu()">
-	<div class="line line01" ></div>
-	<div class="line"></div>
-	<div class="line"></div>
 </div>
 <!-- 메인 gnb 끝 -->
 
@@ -208,22 +193,6 @@
 <!-- 이벤트 배너 끝 -->
 <div th:replace="include/footer :: footer"></div>
 
-<script>
-	function toggleMenu() {
-		var overlay = document.querySelector('.overlay');
-		var menu = document.querySelector('.menu');
-		var hamburger = document.querySelector('.hamburger-menu');
-		if (overlay.style.display === "block") {
-			overlay.style.display = "none";
-			menu.style.display = "none";
-			hamburger.classList.remove('change');
-		} else {
-			overlay.style.display = "block";
-			menu.style.display = "block";
-			hamburger.classList.add('change');
-		}
-	}
-</script>
 <!-- <script>
 document.addEventListener('DOMContentLoaded', function() {
     var shopLink = document.getElementById('shopLink');
