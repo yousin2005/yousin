@@ -110,8 +110,17 @@ public class InfoService {
 
             String currentDir = new File(".").getCanonicalPath();
 
+
             // 업로드 디렉토리 경로 생성
-            Path uploadDir = Paths.get(new File(currentDir).getParent(), "temp");
+            //Path uploadDir = Paths.get(new File(currentDir).getParent(), "temp");
+
+            System.out.println(currentDir);
+
+
+            currentDir = "/jangseongin83/tomcat/temp";
+
+            // 업로드 디렉토리 경로 생성
+            Path uploadDir = Paths.get(currentDir);
 
             // 파일 경로 생성
             Path filePath = uploadDir.resolve("yousin_" + fileDay + ".pdf");
