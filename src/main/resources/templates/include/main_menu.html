@@ -1,0 +1,39 @@
+<main_menu th:fragment="main_menu">
+
+<script>
+	function toggleMenu() {
+		var overlay = document.querySelector('.overlay');
+		var menu = document.querySelector('.menu');
+		var hamburger = document.querySelector('.hamburger-menu');
+		if (overlay.style.display === "block") {
+			overlay.style.display = "none";
+			menu.style.display = "none";
+			hamburger.classList.remove('change');
+		} else {
+			overlay.style.display = "block";
+			menu.style.display = "block";
+			hamburger.classList.add('change');
+		}
+	}
+</script>
+
+<!-- 햄버거 메뉴 시작 -->
+<div class="overlay" onclick="toggleMenu()"></div>
+<div class="menu">
+	<a href="../sub/dep"><span class="green"> 설명서</span>보기</a><br />
+	<a href="../sub/hit"><span class="green"> 지난경주</span>보기</a><br />
+	<a href="code"><span class="green"> 유신예상종합지</span>다운받기</a><br />
+	<a href="../sub/naver_use"><span class="green"> 네이버</span>구매하기</a><br />
+	<!-- <a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span>준비중</a><br /> -->
+	<a href="../sub/shop"><span class="green"> 판매처</span>보기</a><br />
+	<a href="../sub/info"><span class="green"> 등록 문의</span>하기</a>
+</div>
+<!-- 핸버거 메뉴 끝  -->
+	
+<div class="hamburger-menu" onclick="toggleMenu()">
+	<div class="line line01" ></div>
+	<div class="line"></div>
+	<div class="line"></div>
+</div>
+
+</main_menu>
