@@ -118,8 +118,13 @@ public class MakeService {
 
             // 파일을 지정된 경로에 저장
             Path uploadDir = Paths.get(new File(currentDir).getParent(), "temp");
+            //
 
             String pdfUploadDir = uploadDir.toString();
+
+            System.out.println(pdfUploadDir);
+
+            pdfUploadDir = "/jangseongin83/tomcat/temp";
 
             File folderFile = new File(pdfUploadDir);
 
@@ -153,6 +158,7 @@ public class MakeService {
 
             return ResponseEntity.ok("File uploaded successfully: " + pdfUploadFile.getOriginalFilename());
         } catch (IOException e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("PDF File upload failed.");
         }
     }
