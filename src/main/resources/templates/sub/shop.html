@@ -57,28 +57,12 @@
 				.header_sub {height: 33vw;}
 
 			}
-
-
-
     </style>
-
 </head>
-
-<body class="shop">
-<div class="overlay" onclick="toggleMenu()"></div>
-    <div class="menu">
-        <a href="../sub/dep"><span class="green"> 사용설명서</span>바로가기</a><br />
-        <a href="../sub/hit"><span class="green"> 지난경주</span>바로가기</a><br />
-	    <a href="../code"><span class="green"> 유신예상종합지</span>다운받기</a><br />
-        <a href="https://www.youtube.com/@yousin2005"><span class="green"> 유튜브</span>준비중</a><br />
-	    <a href="../sub/info"><span class="green"> 판매처 등록</span>바로가기</a>
-	</div>
-
-<div class="hamburger-menu" onclick="toggleMenu()">
-    <div class="line line01" ></div>
-    <div class="line"></div>
-    <div class="line"></div>
-</div>
+	
+<body>
+<!-- 햄버거 메뉴 -->
+<div th:replace="include/main_menu :: main_menu"></div>	
 
 	<!-- 로고 이미지 -->
 	<div class="header_sub">
