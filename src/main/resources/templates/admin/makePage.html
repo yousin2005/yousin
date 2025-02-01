@@ -37,6 +37,12 @@
 
 </head>
 <body>
+    <a href="../../admin/makePdf">PDF 업로드</a>
+    <br/>
+    <a href="../../admin/makeMessage">시스템 메세지 처리</a>
+    <br/>
+    <br/>
+    <br/>
     <div id="SHOW_TOKEN"></div>
 
     <br/>
@@ -71,46 +77,6 @@
 
     <br/>
     <br/>
-
-
-    <form id="UPLOAD_FORM" action="/admin/uploadpdf" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
-        <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}">
-
-        PDF
-        <br/>
-        입력 날짜 : <input   id="PDF_DATE" type="date" name="savePdfDate" >
-        <br/>
-        <input id="PDF_FILE"  type="file" name="PdfFile" />
-        <button type="submit">엑셀 업로드</button>
-    </form>
-
-    <br/>
-
-    <table border="1">
-        <thead>
-        <tr>
-            <th>일자</th>
-            <th>등록일자</th>
-            <th>등록 IP</th>
-            <th>삭제</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Thymeleaf 반복문 -->
-        <tr th:each="PdfFile : ${PdfFileList}">
-            <td th:text="${PdfFile.fileDay}"></td>
-            <td th:text="${PdfFile.createdDate}"></td>
-            <td th:text="${PdfFile.createIp}">example.txt</td>
-            <td>
-                <button th:onclick="@{'deletePdfFile(\'' + ${PdfFile.fileDay} + '\')'}" >삭제</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-    <br/>
-    <br/>
     <h1>사용자 정보</h1>
     <table id="userTable">
         <thead>
@@ -132,17 +98,7 @@
         <button id="prevPage" disabled>&lt; Previous</button>
         <button id="nextPage">Next &gt;</button>
     </div>
-<!--
-    <form action="/admin/upload" method="post" enctype="multipart/form-data">
-        입력 날짜 : <input type="date" name="saveDate" >
-        <br/>
-        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
-        <input type="hidden" name="_csrf_header" th:value="${_csrf.headerName}">
 
-        <input type="file" name="file" />
-        <button type="submit">엑셀 업로드</button>
-    </form>
--->
     <script>
 
         document.getElementById('sendRequest').addEventListener('click', function() {
@@ -203,7 +159,7 @@
                     ;
 
                     currentPage = 0;
-                    fetchUsers(currentPage);
+                    fetchUsers();
                 })
                 .catch(error => {
                     // 요청이 실패하거나 에러가 발생했을 때
@@ -212,84 +168,6 @@
                 });
 
         });
-
-        function checkDay(dateString) {
-
-            let date = -1;
-
-            if(dateString){
-                // 문자열을 Date 객체로 변환
-                date = new Date(dateString).getDay();
-            }
-
-            // Date 객체의 getDay() 메서드를 사용하여 요일 확인 (0: 일요일, 1: 월요일, ..., 6: 토요일)
-            return  date === 0 || date === 5 || date === 6;
-        }
-
-        document.getElementById('UPLOAD_FORM').addEventListener('submit', function(event) {
-            const dateInput = document.getElementById('PDF_DATE').value;
-            const fileInput = document.getElementById('PDF_FILE').files;
-
-            // 날짜 검증
-            if (!dateInput) {
-                alert('날짜를 입력해주세요.');
-                event.preventDefault(); // 제출 중단
-                return;
-            }
-
-            if(!checkDay(dateInput)){
-                alert('해당 날짜는 금,토,일요일이 아닙니다.');
-                event.preventDefault(); // 제출 중단
-                return;
-            }
-
-            if (fileInput.length === 0) {
-                alert('파일을 첨부해주세요.');
-                event.preventDefault(); // 제출 중단
-                return;
-            }
-
-            const fileName = fileInput[0].name; // 첨부된 파일 이름
-            const fileExtension = fileName.split('.').pop().toLowerCase(); // 확장자 추출 및 소문자로 변환
-            if (fileExtension !== 'pdf') {
-                alert('PDF 파일만 업로드 가능합니다.');
-                event.preventDefault(); // 제출 중단
-                // return;
-            }
-        });
-
-        function deletePdfFile(delFileDay){
-
-            fetch('/admin/deletePdf', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
-                },
-                body: JSON.stringify({ deletePdfDate: delFileDay })
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
-                        throw new Error('서버 요청 실패: ' + response.status);
-                    }
-                    return response; // JSON 형태로 응답을 파싱
-                })
-                .then(data => {
-                    // 성공적으로 JSON 응답을 받았을 때
-                    console.log('서버 응답 데이터:', data);
-                    // 데이터에 대한 처리 로직을 여기에 추가
-                    alert("삭제 성공");
-
-                    location.reload();
-
-                })
-                .catch(error => {
-                    // 요청이 실패하거나 에러가 발생했을 때
-                    console.error('에러 발생:', error);
-                    // 에러 처리 로직을 여기에 추가
-                });
-        }
 
         let currentPage = 0;
         const pageSize = 10;
@@ -297,7 +175,7 @@
         const csrfToken = document.querySelector('meta[name="_csrf"]').content;
 
         // Function to fetch and display users
-        async function fetchUsers(page) {
+        async function fetchUsers() {
 
             const response = await fetch('/admin/users', {
                 method: 'POST',
@@ -305,7 +183,7 @@
                     'Content-Type': 'application/json',
                     'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
                 },
-                body: JSON.stringify({ page: page, size: pageSize })
+                body: JSON.stringify({ page: currentPage, size: pageSize })
             });
 
             if (!response.ok) {
@@ -316,7 +194,7 @@
             const data = await response.json();
             renderTable(data.content);
 
-            document.getElementById('prevPage').disabled = page === 0;
+            document.getElementById('prevPage').disabled = currentPage === 0;
             document.getElementById('nextPage').disabled = data.last;
         }
 
@@ -339,10 +217,6 @@
             });
         }
 
-        function formatVal(val) {
-            if (!val) return ""; // null 또는 undefined 처리
-            return val;
-        }
         function formatToken(token) {
 
             if (!token) return ""; // null 또는 undefined 처리
@@ -374,17 +248,17 @@
         document.getElementById('prevPage').addEventListener('click', () => {
             if (currentPage > 0) {
                 currentPage -= 1;
-                fetchUsers(currentPage);
+                fetchUsers();
             }
         });
 
         document.getElementById('nextPage').addEventListener('click', () => {
             currentPage += 1;
-            fetchUsers(currentPage);
+            fetchUsers();
         });
 
         // Initial fetch
-        fetchUsers(currentPage);
+        fetchUsers();
 
     </script>
 </body>

@@ -3,6 +3,7 @@ package kr.co.yousin.make.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import kr.co.yousin.make.service.MakeService;
 import kr.co.yousin.util.Util;
+import kr.co.yousin.vo.SystemMessage;
 import kr.co.yousin.vo.UserToken;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,17 +24,61 @@ public class MakeController {
     @Autowired
     private MakeService makeService;
 
+    @GetMapping("makeMessage")
+    public String makeMessage(Model model) {
+        return "admin/makeMessage";
+    }
+
+    @PostMapping("makeMessage")
+    @ResponseBody
+    public String makeSystemMessage(HttpServletRequest request, @RequestBody Map<String, Object> params)  {
+
+        String userIP = Util.getClientIp(request);
+        String date = (String)params.get("date");
+        String msg = (String)params.get("msg");
+        SystemMessage systemMessage = makeService.makeSystemMessage(userIP, date, msg);
+
+        return systemMessage.getString();
+    }
+
+    @PostMapping("messages")
+    public ResponseEntity<Page<SystemMessage>> getMessages(@RequestBody Map<String, Object> params) {
+        int page = 0;
+        if(params.get("page") != null){
+            page = (int)params.get("page");
+        }
+        int size = 10;
+        if(params.get("size") != null){
+            size = (int)params.get("size");
+        }
+
+        Page<SystemMessage> messages = makeService.getSystemMessages(page, size);
+        return ResponseEntity.ok(messages); // JSON 형식으로 반환
+    }
+
+    @PostMapping("deleteMessage")
+    @ResponseBody
+    public int handleMessageDelete(@RequestBody Map<String, Object> params)  {
+
+        return makeService.deleteSystemMessages((String)params.get("deleteID"));
+    }
+
     @GetMapping("makePage")
     public String makePage(Model model) {
+        return "admin/makePage";
+    }
+
+    @GetMapping("makePdf")
+    public String makePdf(Model model) {
 
         model.addAttribute("PdfFileList",makeService.getPdfFileList());
 
-        return "admin/makePage";
+        return "admin/makePdf";
     }
 
     @PostMapping("makeToken")
     @ResponseBody
-    public String makeTest(HttpServletRequest request, @RequestBody Map<String, Object> params)  {
+    public String makeToken(HttpServletRequest request, @RequestBody Map<String, Object> params)  {
 
         String userIP = Util.getClientIp(request);
         int day = Integer.parseInt((String)params.get("day"));

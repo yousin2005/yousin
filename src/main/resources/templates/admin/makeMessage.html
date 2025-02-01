@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination button {
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .pagination button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+    </style>
+
+</head>
+<body>
+    <a href="../../admin/makePage">토큰 생성</a>
+    <br/>
+    <a href="../../admin/makePdf">PDF 업로드</a>
+    <br/>
+    <br/>
+    <br/>
+    노출 메세지 : <input id="SYS_MSG"  type="text" />
+    <br/>
+    제한 날짜 : <input   id="PERIOD_DAY" type="date" >
+    -
+    <select id="PERIOD_H">
+        <option value="00" >00</option>
+        <option value="01" >01</option>
+        <option value="02" >02</option>
+        <option value="03" >03</option>
+        <option value="04" >04</option>
+        <option value="05" >05</option>
+        <option value="06" >06</option>
+        <option value="07" >07</option>
+        <option value="08" >08</option>
+        <option value="09" >09</option>
+        <option value="10" >10</option>
+        <option value="11" >11</option>
+        <option value="12" >12</option>
+        <option value="13" >13</option>
+        <option value="14" >14</option>
+        <option value="15" >15</option>
+        <option value="16" >16</option>
+        <option value="17" >17</option>
+        <option value="18" >18</option>
+        <option value="19" >19</option>
+        <option value="20" >20</option>
+        <option value="21" >21</option>
+        <option value="22" >22</option>
+        <option value="23" >23</option>
+    </select> :
+    <select id="PERIOD_M">
+        <option value="00" >00</option>
+        <option value="10" >10</option>
+        <option value="20" >20</option>
+        <option value="30" >30</option>
+        <option value="40" >40</option>
+        <option value="50" >50</option>
+    </select>
+    <br/>
+    <br/>
+
+    <button id="sendRequest">메세지 생성</button>
+
+    <br/>
+    <br/>
+    
+    <br/>
+    <br/>
+    <h1>메세지 정보</h1>
+    <table id="msgTable">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>제한일자</th>
+            <th>메세지</th>
+            <th>토큰 생성날자</th>
+            <th>토큰 생성IP (관리자IP)</th>
+            <th>삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <button id="prevPage" disabled>&lt; Previous</button>
+        <button id="nextPage">Next &gt;</button>
+    </div>
+
+    <script>
+
+        let currentPage = 0;
+        const pageSize = 10;
+        const csrfToken = document.querySelector('meta[name="_csrf"]').content;
+        
+        document.getElementById('sendRequest').addEventListener('click', function() {
+
+            const sysMsg = document.getElementById('SYS_MSG').value
+            const periodDay = document.getElementById('PERIOD_DAY').value
+            const periodH = document.getElementById('PERIOD_H').value
+            const periodM = document.getElementById('PERIOD_M').value
+
+            if(!sysMsg){
+                alert('메세지가 없습니다.');
+                return;
+            }
+
+            if(!periodDay){
+                alert('날짜를 선택하세요.');
+                return;
+            }
+
+            fetch('/admin/makeMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ date: (periodDay.replace(/-/g, "") + periodH + periodM), msg : sysMsg })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
+                        throw new Error('서버 요청 실패: ' + response.status);
+                    }
+                    return response.json(); // JSON 형태로 응답을 파싱
+                })
+                .then(data => {
+                    // 성공적으로 JSON 응답을 받았을 때
+                    console.log('서버 응답 데이터:', data);
+                    
+                    alert("메세지 추가 완료");
+                    currentPage = 0;
+                    fetchMsgs();
+                })
+                .catch(error => {
+                    // 요청이 실패하거나 에러가 발생했을 때
+                    console.error('에러 발생:', error);
+                    // 에러 처리 로직을 여기에 추가
+                });
+
+        });
+        
+        function deleteMsg(delID){
+
+            fetch('/admin/deleteMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ deleteID: delID })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        // 응답 상태가 성공적이지 않은 경우 (예: 4xx 또는 5xx 에러)
+                        throw new Error('서버 요청 실패: ' + response.status);
+                    }
+                    return response; // JSON 형태로 응답을 파싱
+                })
+                .then(data => {
+                    // 성공적으로 JSON 응답을 받았을 때
+                    console.log('서버 응답 데이터:', data);
+                    // 데이터에 대한 처리 로직을 여기에 추가
+                    alert("삭제 성공");
+
+                    currentPage = 0;
+                    fetchMsgs();
+                })
+                .catch(error => {
+                    // 요청이 실패하거나 에러가 발생했을 때
+                    console.error('에러 발생:', error);
+                    // 에러 처리 로직을 여기에 추가
+                });
+        }
+        
+        // Function to fetch and display users
+        async function fetchMsgs() {
+
+            const response = await fetch('/admin/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
+                },
+                body: JSON.stringify({ page: currentPage, size: pageSize })
+            });
+
+            if (!response.ok) {
+                alert("Failed to fetch users");
+                return;
+            }
+
+            const data = await response.json();
+            renderTable(data.content);
+
+            document.getElementById('prevPage').disabled = currentPage === 0;
+            document.getElementById('nextPage').disabled = data.last;
+        }
+
+        // Function to render the table
+        function renderTable(messages) {
+            const tableBody = document.querySelector('#msgTable tbody');
+            tableBody.innerHTML = ''; // Clear previous data
+
+            messages.forEach(message => {
+                const row = document.createElement('tr');
+
+                let btnHtml = `<button onclick="deleteMsg('${message.messageId}')">삭제</button>`;
+
+                if(message.delYn == 'Y'){
+                    btnHtml = "삭제됨";
+                }
+
+                row.innerHTML = `
+                    <td>${message.messageId}</td>
+                    <td>${formatPeriodDate(message.periodDate)}</td>
+                    <td>${message.message}</td>
+                    <td>${formatDate(message.createdDate)}</td>
+                    <td>${message.createIp}</td>
+                    <td>${btnHtml}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function formatVal(val) {
+            if (!val) return ""; // null 또는 undefined 처리
+            return val;
+        }
+
+        function formatDate(dateString) {
+
+            if (!dateString) return ""; // null 또는 undefined 처리
+
+            const date = new Date(dateString); // 날짜 문자열을 Date 객체로 변환
+
+            // '2025-01-15T21:49:19' 형식에서 '2025-01-15 21:49:19'로 변환
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
+            const day = String(date.getDate()).padStart(2, '0');
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const seconds = String(date.getSeconds()).padStart(2, '0');
+
+            // 포맷팅된 날짜 문자열 반환
+            return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        }
+
+        function formatPeriodDate(dattString) {
+
+            if (!dattString) return ""; // null 또는 undefined 처리
+
+            if (dattString.length !== 12) {
+                return dattString; // ID가 16자리가 아닌 경우 그대로 반환
+            }
+            return `${dattString.slice(0, 4)}-${dattString.slice(4, 6)}-${dattString.slice(6, 8)} ${dattString.slice(8, 10)}:${dattString.slice(10, 12)}`;
+        }
+
+        // Event listeners for pagination buttons
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage -= 1;
+                fetchMsgs();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            currentPage += 1;
+            fetchMsgs();
+        });
+
+        fetchMsgs();
+
+    </script>
+</body>
+</html>

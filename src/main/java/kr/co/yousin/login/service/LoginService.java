@@ -1,6 +1,7 @@
 package kr.co.yousin.login.service;
 
-import kr.co.yousin.vo.UserRole;
+import kr.co.yousin.vo.SystemMessage;
+import kr.co.yousin.vo.SystemMessageRepository;
 import kr.co.yousin.vo.UserToken;
 import kr.co.yousin.vo.TokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class LoginService implements UserDetailsService {
 
     @Autowired
     private TokenRepository tokenRepository;
+
+    @Autowired
+    private SystemMessageRepository systemMessageRepository;
 
     public UserDetails loadUserByUsername(String toekn) throws AuthenticationException {
 
@@ -57,6 +61,17 @@ public class LoginService implements UserDetailsService {
 
         //UserDetails user = new User(userToken.getToken(), "{noop}", authorityList);
         //return user;
+    }
+
+    public Object[] getSystemMessage(String checkDate){
+        Object[][] msgInfo = systemMessageRepository.findInitSystemMessageInfo(checkDate);
+
+        if(msgInfo == null || msgInfo.length == 0){
+            return null;
+        }
+
+        return msgInfo[0];
+
     }
 
 }

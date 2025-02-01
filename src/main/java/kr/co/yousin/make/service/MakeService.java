@@ -1,9 +1,6 @@
 package kr.co.yousin.make.service;
 
-import kr.co.yousin.vo.PdfFile;
-import kr.co.yousin.vo.PdfFileRepository;
-import kr.co.yousin.vo.UserToken;
-import kr.co.yousin.vo.TokenRepository;
+import kr.co.yousin.vo.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -42,10 +39,33 @@ public class MakeService {
     @Autowired
     private TokenRepository tokenRepository;
 
+    @Autowired
+    private SystemMessageRepository systemMessageRepository;
+
+    public SystemMessage makeSystemMessage(String userIP, String periodDate, String msg){
+
+        SystemMessage message = new SystemMessage();
+
+        message.setPeriodDate(periodDate);
+        message.setMessage(msg);
+        message.setCreatedDate(LocalDateTime.now());
+        message.setCreateIp(userIP);
+        message.setDelYn("N");
+
+        return systemMessageRepository.save(message);
+    }
+
+    public Page<SystemMessage> getSystemMessages(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size); // 페이지와 크기 설정
+        return systemMessageRepository.findAllByOrderByCreatedDateDesc(pageable);
+    }
+    public int deleteSystemMessages(String deleteMsgID) {
+        return systemMessageRepository.updateDelYn(deleteMsgID, "Y");
+    }
+
     public Page<UserToken> getUsers(int page, int size) {
         Pageable pageable = PageRequest.of(page, size); // 페이지와 크기 설정
-        Page<UserToken> users = tokenRepository.findAllByOrderByCreatedDateDesc(pageable);
-        return users;
+        return tokenRepository.findAllByOrderByCreatedDateDesc(pageable);
     }
 
     public UserToken makeToken(String userIP, int periodValidity){
