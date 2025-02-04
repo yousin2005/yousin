@@ -39,12 +39,15 @@ public class InfoService {
             userInfoMap.put("StartDay", startDate.format(formatter));
             userInfoMap.put("EndDay", endDay.format(formatter));
 
+            String tokenType = userToken.getTokenType();
+
+            userInfoMap.put("TokenType", tokenType);
         }
 
         return userInfoMap;
     }
 
-    public Map<String, Object> getUserPdfFileList(String token) {
+    public Map<String, Object> getUserPdfFileList(String token, String tokenType) {
 
         Map<String, Object> userPdfFileMap = new HashMap<>();
 
@@ -67,20 +70,19 @@ public class InfoService {
 
         DateTimeFormatter showFormatter = DateTimeFormatter.ofPattern("MM.dd");
 
-
         for(Object[] obj : userList){
 
-            if(formattedFriday.equals(obj[0])){
+            if( tokenType.contains("4") && formattedFriday.equals(obj[0]) ){
                 userPdfFileMap.put("FridayCnt",obj[1]);
                 userPdfFileMap.put("FridayFileDay", formattedFriday);
                 userPdfFileMap.put("Friday", friday.format(showFormatter));
             }
-            if(formattedSaturday.equals(obj[0])){
+            if( tokenType.contains("5") && formattedSaturday.equals(obj[0]) ){
                 userPdfFileMap.put("SaturdayCnt",obj[1]);
                 userPdfFileMap.put("SaturdayFileDay", formattedSaturday);
                 userPdfFileMap.put("Saturday", saturday.format(showFormatter));
             }
-            if(formattedSunday.equals(obj[0])){
+            if( tokenType.contains("6") && formattedSunday.equals(obj[0]) ){
                 userPdfFileMap.put("SundayCnt",obj[1]);
                 userPdfFileMap.put("SundayFileDay", formattedSunday);
                 userPdfFileMap.put("Sunday", sunday.format(showFormatter));

@@ -47,7 +47,7 @@
 
     <br/>
     <br/>
-
+    기간 :
     <select id="TOKEN_DAY">
         <option value="1" >1</option>
         <option value="3" >3</option>
@@ -71,6 +71,17 @@
     </select>
 
     <br/>
+    타입 :
+    <select id="TOKEN_TYPE">
+        <option value="4|5|6" selected >금 & 토 & 일</option>
+        <option value="4|5" >금 & 토</option>
+        <option value="4|6" >금 & 일</option>
+        <option value="5|6" >토 & 일 </option>
+        <option value="4" >금요일</option>
+        <option value="5" >토요일</option>
+        <option value="6" >일요일</option>
+    </select>
+    <br/>
     <br/>
 
     <button id="sendRequest">토큰 생성</button>
@@ -82,6 +93,7 @@
         <thead>
         <tr>
             <th>토큰</th>
+            <th>토큰타입</th>
             <th>유효기간</th>
             <th>최초접속일</th>
             <th>마지막접속일</th>
@@ -103,7 +115,13 @@
 
         document.getElementById('sendRequest').addEventListener('click', function() {
 
-            const tokenDay = document.getElementById('TOKEN_DAY').value
+            const tokenDay = document.getElementById('TOKEN_DAY').value;
+            const tokenType = document.getElementById('TOKEN_TYPE').value;
+
+            if(!tokenType){
+                alert('타입 정보가 없습니다.');
+                return;
+            }
 
             if(!tokenDay){
                 alert('수량 정보가 없습니다.');
@@ -124,7 +142,7 @@
                     'Content-Type': 'application/json',
                     'X-XSRF-TOKEN': csrfToken // CSRF 토큰 헤더 추가
                 },
-                body: JSON.stringify({ day: tokenDay })
+                body: JSON.stringify({ day: tokenDay, type : tokenType })
             })
                 .then(response => {
                     if (!response.ok) {
@@ -207,6 +225,7 @@
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${formatToken(user.token)}</td>
+                    <td>${formatTokenType(user.tokenType)}</td>
                     <td>${user.periodValidity}</td>
                     <td>${formatDate(user.initialAccessDate)}</td>
                     <td>${formatDate(user.lastAccessDate)}</td>
@@ -225,6 +244,11 @@
                 return token; // ID가 16자리가 아닌 경우 그대로 반환
             }
             return `${token.slice(0, 4)}-${token.slice(4, 8)}-${token.slice(8, 12)}-${token.slice(12, 16)}`;
+        }
+
+        function formatTokenType(tokenType) {
+            if (!tokenType) return ""; // null 또는 undefined 처리
+            return tokenType.replace(/\|/g, " & ").replace('4', '금').replace('5', '토').replace('6', '일');
         }
 
         function formatDate(dateString) {

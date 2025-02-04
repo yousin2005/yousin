@@ -68,12 +68,13 @@ public class MakeService {
         return tokenRepository.findAllByOrderByCreatedDateDesc(pageable);
     }
 
-    public UserToken makeToken(String userIP, int periodValidity){
+    public UserToken makeToken(String userIP, int periodValidity, String type){
         String randomString = generateRandomString(LENGTH);
 
         UserToken token = new UserToken();
 
         token.setToken(randomString);
+        token.setTokenType(type);
         token.setPeriodValidity(periodValidity);
         token.setCreateIP(userIP);
         token.setCreatedDate(LocalDateTime.now());

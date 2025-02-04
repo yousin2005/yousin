@@ -82,7 +82,9 @@ public class MakeController {
 
         String userIP = Util.getClientIp(request);
         int day = Integer.parseInt((String)params.get("day"));
-        UserToken token = makeService.makeToken(userIP, day);
+        String type = (String)params.get("type");
+
+        UserToken token = makeService.makeToken(userIP, day, type);
 
 
         return token.getString();

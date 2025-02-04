@@ -11,6 +11,7 @@ public class UserToken {
     @Id
     private String token;
     private int periodValidity;
+    private String tokenType;
     private LocalDateTime initialAccessDate;
     private LocalDateTime lastAccessDate;
     private LocalDateTime createdDate;
@@ -34,6 +35,17 @@ public class UserToken {
 
     public LocalDateTime getInitialAccessDate() {
         return initialAccessDate;
+    }
+
+    public String getTokenType() {
+        if(tokenType == null || tokenType.isEmpty()){
+            return "4|5|6";
+        }
+        return tokenType;
+    }
+
+    public void setTokenType(String tokenType) {
+        this.tokenType = tokenType;
     }
 
     public void setInitialAccessDate(LocalDateTime initialAccessDate) {

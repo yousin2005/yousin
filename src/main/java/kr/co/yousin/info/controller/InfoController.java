@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.nio.file.Path;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/info/")
@@ -44,8 +45,10 @@ public class InfoController {
           return "code";
         }
 
-        model.addAttribute("TokenDays",infoService.getTokenDays(userToken));
-        model.addAttribute("PdfFile",infoService.getUserPdfFileList(userToken));
+        Map<String, Object> tokenDays = infoService.getTokenDays(userToken);
+
+        model.addAttribute("TokenDays", tokenDays);
+        model.addAttribute("PdfFile",infoService.getUserPdfFileList(userToken, (String)tokenDays.get("TokenType")));
 
         return "info/yousionInfo";
     }
