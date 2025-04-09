@@ -221,11 +221,9 @@ footer .wrap img {max-width:30%;}
 
 /* PCȭ�� ������¡ */
 
-@media only screen and (max-width: 3840px) {
+@media only screen and (max-width: 3840px) {ul, ol, li {list-style: none; }
 
-		ul, ol, li {list-style: none; }
-
-		.header {width: 640px;margin: 5vw auto 0;}
+		.header {width: 640px;margin: 2vw auto 0;}
 		.content-box {width: 640px;margin: 4px auto 0; height: 4vw}
 		.content-box a {text-align:center;line-height: 1.2;font-size: 2.5em;height: auto;height: 4vw; display: flex;
         flex-direction: column;justify-content: center;}
@@ -324,11 +322,9 @@ footer .wrap img {max-width:30%;}
 		#main_con_box .box5 a {}
 }
 
-@media only screen and (max-width: 2560px) {
+@media only screen and (max-width: 2560px) {ul, ol, li {list-style: none; }
 
-		ul, ol, li {list-style: none; }
-
-		.header {width: 640px;margin: 5vw auto 0;}
+		.header {width: 640px;margin: 2vw auto 0;}
 		.content-box {width: 640px;margin: 5px auto 0; height: 4vw}
 		.content-box a {text-align:center;line-height: 1.2;font-size: 2.5em;height: auto;height: 4vw; display: flex;
         flex-direction: column;justify-content: center;}
@@ -420,15 +416,11 @@ footer .wrap img {max-width:30%;}
 		#main_con_box .box3 a {}
 		#main_con_box .box4 a {}
 		#main_con_box .box5 a {}
-
-
 }
 
-@media only screen and (max-width: 1920px) {
+@media only screen and (max-width: 1920px) {ul, ol, li {list-style: none; }
 
-		ul, ol, li {list-style: none; }
-
-		.header {width: 640px;margin: 5vw auto 0;}
+		.header {width: 640px;margin: 2vw auto 0;}
 		.content-box {width: 640px;margin: 5px auto 0; height: 8vw}
 		.content-box a {text-align:center;line-height: 1.2;font-size: 2.5em;height: auto;height: 8vw; display: flex;
         flex-direction: column;justify-content: center;}
