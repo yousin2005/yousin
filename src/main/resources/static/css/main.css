@@ -235,8 +235,10 @@ footer .wrap img {max-width:30%;}
 	
 	    div.Btn {
         position: absolute;
-        right: 9vw;
-        top: 1vw;}
+        right: 4.8vw;
+        top: 0.7vw;
+	    max-width: 70%;}
+	
 		
 		/* Footer --- Social icons */
 		ul.f_social_box {display: flex;justify-content: center;margin: 1vw 0 0;}
@@ -333,6 +335,12 @@ footer .wrap img {max-width:30%;}
 		footer .wrap {width:640px;border-top: 1px solid #888;padding-bottom: 5vw;margin-top: 2vw;}
 		footer .wrap p {font-size: 1em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
 		footer p {/*margin-bottom:5%;*/}
+	
+	    div.Btn {
+        position: absolute;
+        right: 7vw;
+        top: 1vw;
+	    max-width: 70%;}
 		
 		/* Footer --- Social icons */
 		ul.f_social_box {display: flex;justify-content: center;margin: 1vw 0 0;}
@@ -429,6 +437,12 @@ footer .wrap img {max-width:30%;}
 		footer .wrap {width:640px;border-top: 1px solid #888;padding-bottom: 5vw;margin-top: 2vw;}
 		footer .wrap p {font-size: 1em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
 		footer p {/*margin-bottom:5%;*/}
+	
+	    div.Btn {
+        position: absolute;
+        right: 9vw;
+        top: 1.3vw;
+	    /*max-width: 70%;*/}
 		
 		/* Footer --- Social icons */
 		ul.f_social_box {display: flex;justify-content: center;margin: 1vw 0 0;}
