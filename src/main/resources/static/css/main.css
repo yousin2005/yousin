@@ -84,9 +84,9 @@ footer .wrap img {max-width:30%;}
 #paid .con02_txt p { margin: 0 5px; padding: 10px 14px 0px; font-size:20px; font-weight: 700; letter-spacing: -1px; line-height: 30px;}
 #paid .con02_txt p span{font-size:20px ;display: block; font-weight: 700;color:#47474e; letter-spacing: -1px;}
 
-#paid .con_03{margin-top: 20px; border-top: 1px solid #9ccc3c;}
+#paid .con_03{margin-top: 20px; margin-bottom: 20px; border-top: 1px solid #9ccc3c;}
 #paid .con03_txt{color: red; margin: 12px 0px 6px; font-weight: 700; font-size: 18px; letter-spacing: -1px;}
-#paid .con03_info{ font-size: 12px; font-weight: 300; text-align: left; letter-spacing: -1px;}
+#paid .con03_info{ font-size: 12px; font-weight: 300; letter-spacing: -1px;}
 #paid .con03_info li{list-style: none;}
 
 .sub02_bottom a {
@@ -452,7 +452,7 @@ footer .wrap img {max-width:30%;}
 		ul.f_social_box li a img {max-width: 60%;}
 
 		.hamburger-menu {right: 34vw;top: 4vw;}
-		.back { left: 33vw;top: 7vw;}
+		.back { left: 33vw;top: 4vw;}
 		.menu {font-size: 1.5em; width: 15vw;right: 32vw;top: 6vw;}
 		.overlay {width: 640px; left: 50%;transform: translate(-50%);}
 		.menu a:before {top: 0.5vw;left: -1vw;}
