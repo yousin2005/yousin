@@ -230,7 +230,7 @@ footer .wrap img {max-width:30%;}
 		
 		/* Footer */
 		footer .wrap {width:640px;border-top: 1px solid #888;padding-bottom: 5vw;margin-top: 2vw;}
-		footer .wrap p {font-size: 1em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
+		footer .wrap p {font-size: 0.8em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
 		footer p {/*margin-bottom:5%;*/}
 	
 	    div.Btn {
@@ -248,7 +248,7 @@ footer .wrap img {max-width:30%;}
 		ul.f_social_box li a img {max-width: 60%;}
 
 		.hamburger-menu {right: 42vw;top: 3vw;}
-		.back { left: 33vw;top: 7vw;}
+		.back { left: 42vw;top: 3vw;}
 		.menu {font-size: 1.5em; width: 15vw;right: 32vw;top: 6vw;}
 		.overlay {width: 640px; left: 50%;transform: translate(-50%);}
 		.menu a:before {top: 0.5vw;left: -1vw;}
@@ -333,7 +333,7 @@ footer .wrap img {max-width:30%;}
 		
 		/* Footer */
 		footer .wrap {width:640px;border-top: 1px solid #888;padding-bottom: 5vw;margin-top: 2vw;}
-		footer .wrap p {font-size: 1em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
+		footer .wrap p {font-size: 0.8em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
 		footer p {/*margin-bottom:5%;*/}
 	
 	    div.Btn {
@@ -350,7 +350,7 @@ footer .wrap img {max-width:30%;}
 		ul.f_social_box li a img {max-width: 60%;}
 
 		.hamburger-menu {right: 38vw;top: 3vw;}
-		.back { left: 33vw;top: 7vw;}
+		.back { left: 38vw;top: 4vw;}
 		.menu {font-size: 1.5em; width: 15vw;right: 32vw;top: 6vw;}
 		.overlay {width: 640px; left: 50%;transform: translate(-50%);}
 		.menu a:before {top: 0.5vw;left: -1vw;}
@@ -435,7 +435,7 @@ footer .wrap img {max-width:30%;}
 		
 		/* Footer */
 		footer .wrap {width:640px;border-top: 1px solid #888;padding-bottom: 5vw;margin-top: 2vw;}
-		footer .wrap p {font-size: 1em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
+		footer .wrap p {font-size: 0.8em;border-top: 1px solid #888;border-bottom: 1px solid #888;padding: 1vw 0;font-weight: 400;}
 		footer p {/*margin-bottom:5%;*/}
 	
 	    div.Btn {
@@ -452,7 +452,7 @@ footer .wrap img {max-width:30%;}
 		ul.f_social_box li a img {max-width: 60%;}
 
 		.hamburger-menu {right: 34vw;top: 4vw;}
-		.back { left: 33vw;top: 4vw;}
+		.back { left: 34vw;top: 4vw;}
 		.menu {font-size: 1.5em; width: 15vw;right: 32vw;top: 6vw;}
 		.overlay {width: 640px; left: 50%;transform: translate(-50%);}
 		.menu a:before {top: 0.5vw;left: -1vw;}
@@ -559,15 +559,15 @@ footer .wrap img {max-width:30%;}
 		/* 유료페이지 */
 		#paid .wrap {width:90%;}
 
-		.hamburger-menu {top: 10vw; right: 40px;}
-		.back { left: 5vw;top: 11vw;}
+		.hamburger-menu {top: 10vw; right: 26px;}
+		.back { left: 5vw;top: 10vw;}
 		.menu {font-size: 6vw; width: 80%;top: 0;right: 0;}
 		.overlay {width: 100%;left: 0; transform: unset;}
 		.menu a:before {top: 2vw;left: -4vw;}
 
 		/* Footer */
 		footer .wrap {width: 90%;padding-bottom: 10vw;margin-top:5vw;}	
-		footer .wrap p {font-size: 1em;padding: 3vw 0;}
+		footer .wrap p {font-size: 0.8em;padding: 3vw 0;}
 		
 		/* Footer --- Social icons */
 		ul.f_social_box {display: flex;justify-content: center;margin: 4vw 0 0}
