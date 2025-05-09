@@ -64,6 +64,12 @@ footer .wrap img {max-width:30%;}
 #main_con_box2 .box3{width:49%; float:left;}
 #main_con_box2 .box4{width:50%; float:right;}
 
+/* 사용권 구매하기 */
+div.m_price_box {}
+div.m_price_box ul {}
+div.m_price_box ul li {}
+div.m_price_box ul li a {}
+div.m_price_box ul li a img {}
 
 /* 유료페이지 */
 #paid .wrap{width:90%; margin:0px auto; text-align: center;}
