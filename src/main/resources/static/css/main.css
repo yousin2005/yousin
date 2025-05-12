@@ -64,7 +64,7 @@ footer .wrap img {max-width:30%;}
 #main_con_box2 .box3{width:49%; float:left;}
 #main_con_box2 .box4{width:50%; float:right;}
 
-/* 사용권 구매하기 */
+/* 네이버 사용권 구매하기 */
 div.m_price_box {width:640px;margin: 0 auto 2vw;}
 div.m_price_box ul {display: flex;align-items: center;justify-content: center;}
 div.m_price_box ul li {text-align: center;}
@@ -73,6 +73,8 @@ div.m_price_box ul li a span {line-height: 1.2;display: inline-block;}
 div.m_price_box ul li a span b {}
 div.m_price_box ul li a span em {font-style: normal;font-weight: bold;color: #ff4546;}
 div.m_price_box ul li a img {}
+
+p.naver_txt01 {}
 
 /* 유료페이지 */
 #paid .wrap{width:90%; margin:0px auto; text-align: center;}
