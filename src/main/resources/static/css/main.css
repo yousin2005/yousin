@@ -67,7 +67,7 @@ footer .wrap img {max-width:30%;}
 /* 네이버 사용권 구매하기 */
 div.m_price_box {width:640px;margin: 0 auto 2vw;}
 div.m_price_box ul {display: flex;align-items: center;justify-content: center;}
-div.m_price_box ul li {text-align: center;}
+div.m_price_box ul li {text-align: center;width:33%;}
 div.m_price_box ul li a {color: #000;font-size: 20px;}
 div.m_price_box ul li a span {line-height: 1.2;display: inline-block;}
 div.m_price_box ul li a span b {}
