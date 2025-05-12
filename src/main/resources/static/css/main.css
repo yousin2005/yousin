@@ -69,6 +69,9 @@ div.m_price_box {width:640px;margin: 0 auto;}
 div.m_price_box ul {}
 div.m_price_box ul li {}
 div.m_price_box ul li a {}
+div.m_price_box ul li a span {}
+div.m_price_box ul li a span b {}
+div.m_price_box ul li a span em {}
 div.m_price_box ul li a img {}
 
 /* 유료페이지 */
