@@ -193,8 +193,8 @@ p.naver_txt01 {font-size: 20px;font-weight: bold;display: block;padding-bottom: 
 .info_wrap{width:90%;margin:0 auto}
 .info_wrap div{ width: 49.5%; text-align: center; font-size: 24px; float: left; height: 114px; padding-top: 42px; border-radius: 24px; font-weight: 600;}
 .info_wrap div a{text-decoration:none; color:#000;display:block;width:100%}
-.email{background:#9ccc3d url(../img/arrow.png) no-repeat 91% 89%;margin-right:1%}
-.kakao{background:#fae200 url(../img/arrow.png) no-repeat 91% 89%;}
+.email{background:#e0f1cc url(../img/arrow.png) no-repeat 91% 89%;margin-right:1%}
+.naver{background:#9ccc3d url(../img/arrow.png) no-repeat 91% 89%;}
  /* info ������ */
 .ad02{width:90%}
 .ad01 {width: 90%;overflow: hidden; position: relative; }
