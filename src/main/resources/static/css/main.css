@@ -74,7 +74,7 @@ div.m_price_box ul li a span b {}
 div.m_price_box ul li a span em {font-style: normal;font-weight: bold;color: #ff4546;}
 div.m_price_box ul li a img {}
 
-p.naver_txt01 {}
+p.naver_txt01 {font-size: 20px;font-weight: bold;display: block;padding-bottom: 2vw;}
 
 /* 유료페이지 */
 #paid .wrap{width:90%; margin:0px auto; text-align: center;}
@@ -576,6 +576,8 @@ p.naver_txt01 {}
       div.m_price_box ul li a span b {font-size: 15px;}
       div.m_price_box ul li a span em {font-style: normal;font-weight: bold;color: #ff4546;}
       div.m_price_box ul li a img {width: 100%;}
+
+      p.naver_txt01 {font-size: 18px;padding-bottom: 2vw;}
 	
 		/* 유료페이지 */
 		#paid .wrap {width:90%;}
