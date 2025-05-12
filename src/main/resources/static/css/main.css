@@ -566,14 +566,14 @@ div.m_price_box ul li a img {}
 
 @media only screen and (max-width: 640px) {
 
-      div.m_price_box  {}
+      div.m_price_box  {width: 100%;margin: 0 auto 5vw;}
       div.m_price_box ul {display: flex;align-items: center;justify-content: center;}
-      div.m_price_box ul li {text-align: center;}
+      div.m_price_box ul li {text-align: center;width: 33%;}
       div.m_price_box ul li a {color: #000;font-size: 20px;}
-      div.m_price_box ul li a span {}
-      div.m_price_box ul li a span b {}
+      div.m_price_box ul li a span {font-size: 15px;letter-spacing: -2px;}
+      div.m_price_box ul li a span b {font-size: 15px;}
       div.m_price_box ul li a span em {font-style: normal;font-weight: bold;color: #ff4546;}
-      div.m_price_box ul li a img {}
+      div.m_price_box ul li a img {width: 100%;}
 	
 		/* 유료페이지 */
 		#paid .wrap {width:90%;}
