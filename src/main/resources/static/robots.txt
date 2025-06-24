@@ -1,2 +1,7 @@
 User-agent: *
-Allow:/
+Disallow:
+
+User-agent: Yeti
+Allow: /
+
+Sitemap: https://yousin.co.kr/sitemap.xml
