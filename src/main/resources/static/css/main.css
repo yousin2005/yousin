@@ -183,7 +183,7 @@ p.naver_txt01 {font-size: 20px;font-weight: bold;display: block;padding-bottom: 
 .map01 span {border-radius: 50px; padding: 2px 8px; font-size: 2.6vw;background: #ff3d3d; color: #fff; float:left;margin: 1.7vw 0 0 1vw;}
 
  /* dep */
- .logo3 {background:url('../img/sub_logo3.jpg') no-repeat center ;  width:100%; height:157px; background-color: #fff; z-index: 999;display: block;margin: 10px auto;}
+ .logo3 {background:url('../img/sub_logo3.jpg') no-repeat `center ;  width:100%; height:157px; background-color: #fff; z-index: 999;display: block;margin: 10px auto;}
 .wrap img {max-width: 100%; height: auto;}
 #dep_sub{border-top: 5px solid #9ccc3d; width: 100%; height: 200px; background: #fff; z-index: 10;position:absolute;}
 
@@ -547,7 +547,7 @@ p.naver_txt01 {font-size: 20px;font-weight: bold;display: block;padding-bottom: 
 
 @media only screen and (max-width: 1024px) {
 
-		.header {width: 980px;margin: 5vw auto 0;}
+		.header {width: 640px;margin: 5vw auto 0;}
 		.content-box {width: 980px;margin: 5px auto 0;}
 	    .footer-logo {width: 90%;}	
 }
