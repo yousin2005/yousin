@@ -554,7 +554,7 @@ p.naver_txt01 {font-size: 20px;font-weight: bold;display: block;padding-bottom: 
 
 @media only screen and (max-width: 980px) {
 
-		.header {width: 980px;margin: 5vw auto 0;}
+		.header {width: 640px;margin: 5vw auto 0;}
 		.content-box {width: 980px;margin: 5px auto 0;}
 	    .footer-logo {width: 90%;}
 }
