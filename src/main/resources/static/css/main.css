@@ -532,7 +532,8 @@ p.naver_txt01 {font-size: 20px;font-weight: bold;display: block;padding-bottom: 
 		#main_con_box .box1{width:49%; float:left;height:8vw}
 		#main_con_box .box1_2{width:50%; background:#e0f1cc url(../img/arrow.png) no-repeat 96% 50%; float:right;height: 8vw}
 		#main_con_box2{width: 640px;height: 8vw; margin: 0px auto 10px; text-align: center; line-height: 150px; border-radius: 24px; }
-		#main_con_box2 .box3{width:49%; float:left;height: 8vw}
+		#main_con_box2 .box3{width:49%; float:left;height: 8vw;background-color: #ff4546;}
+		#main_con_box2 .box3 a {color:#FFF;}
 		#main_con_box2 .box4{width:50%; background:#e0f1cc url(../img/arrow.png) no-repeat 96% 50%; float:right;height: 8vw}
 
 		#main_con_box div a {}
