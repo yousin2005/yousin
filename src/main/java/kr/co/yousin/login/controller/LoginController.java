@@ -54,18 +54,18 @@ public class LoginController {
         // 주석 }
 
         // 요일 및 시간 정보 가져오기
-        DayOfWeek day = now.getDayOfWeek(); // 목요일은 THURSDAY
-        int hour = now.getHour();
-
+        // 주석 DayOfWeek day = now.getDayOfWeek(); // 목요일은 THURSDAY
+        // 주석 int hour = now.getHour();
+        // 주석
         // 허용된 요일과 시간 (목요일 12시 이후 ~ 일요일 )
-        boolean isShow = (day == DayOfWeek.THURSDAY && hour >= 12) ||
-                (day == DayOfWeek.FRIDAY) ||
-                (day == DayOfWeek.SATURDAY) ||
-                (day == DayOfWeek.SUNDAY);
-
-        if("Y".equals(request.getParameter("ADMIN"))){
-            isShow = true;
-        }
+        // 주석 boolean isShow = (day == DayOfWeek.THURSDAY && hour >= 12) ||
+        // 주석        (day == DayOfWeek.FRIDAY) ||
+        // 주석        (day == DayOfWeek.SATURDAY) ||
+        // 주석        (day == DayOfWeek.SUNDAY);
+        // 주석
+        // 주석if("Y".equals(request.getParameter("ADMIN"))){
+        // 주석    isShow = true;
+        // 주석}
 
         // 주석 if (!isShow) {
         // 주석     try {
