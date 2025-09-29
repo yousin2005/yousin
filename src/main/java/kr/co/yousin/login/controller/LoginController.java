@@ -36,22 +36,22 @@ public class LoginController {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
 
-        Object[] msgInfo = loginService.getSystemMessage(now.format(formatter));
+        // 주석 Object[] msgInfo = loginService.getSystemMessage(now.format(formatter));
 
         // 시스템 메세지
-        if(!"Y".equals(request.getParameter("ADMIN")) && msgInfo != null && msgInfo.length > 0){
-
-            try {
+        // 주석 if(!"Y".equals(request.getParameter("ADMIN")) && msgInfo != null && msgInfo.length > 0){
+        // 주석 
+        // 주석     try {
                 // 요일/시간 조건에 맞지 않을 경우 경고 메시지와 리다이렉트
-                response.setContentType("text/html; charset=UTF-8");
-                response.getWriter().write("<script>alert('"+msgInfo[1]+"'); location.href='/';</script>");
-                response.getWriter().flush();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-
-            return null;
-        }
+        // 주석         response.setContentType("text/html; charset=UTF-8");
+        // 주석         response.getWriter().write("<script>alert('"+msgInfo[1]+"'); location.href='/';</script>");
+        // 주석         response.getWriter().flush();
+        // 주석     }catch (IOException e){
+        // 주석         e.printStackTrace();
+        // 주석     }
+        // 주석 
+        // 주석     return null;
+        // 주석 }
 
         // 요일 및 시간 정보 가져오기
         DayOfWeek day = now.getDayOfWeek(); // 목요일은 THURSDAY
@@ -67,18 +67,18 @@ public class LoginController {
             isShow = true;
         }
 
-        if (!isShow) {
-            try {
+        // 주석 if (!isShow) {
+        // 주석     try {
                 // 요일/시간 조건에 맞지 않을 경우 경고 메시지와 리다이렉트
-                response.setContentType("text/html; charset=UTF-8");
-                response.getWriter().write("<script>alert('서비스 이용시간이 아닙니다. \\n(서비스 시간 : 목요일 12시 ~ 일요일 24시)'); location.href='/';</script>");
-                response.getWriter().flush();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
-
-            return null;
-        }
+        // 주석         response.setContentType("text/html; charset=UTF-8");
+        // 주석         response.getWriter().write("<script>alert('서비스 이용시간이 아닙니다. \\n(서비스 시간 : 목요일 12시 ~ 일요일 24시)'); location.href='/';</script>");
+        // 주석         response.getWriter().flush();
+        // 주석     }catch (IOException e){
+        // 주석         e.printStackTrace();
+        // 주석     }
+        // 주석 
+        // 주석     return null;
+        // 주석 }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null){
