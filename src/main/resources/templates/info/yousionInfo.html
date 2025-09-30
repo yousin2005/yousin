@@ -149,9 +149,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				</p>
 			</div>
 			<div class="con02_btn">
-				<a th:if="${PdfFile['Friday'] != null}" href="#" class="btn01" th:onclick="@{'showPdfFile(\'' + ${PdfFile['FridayFileDay']} + '\')'}" ><span th:text="${PdfFile['Friday']}">12.27</span>금요일<br /><span>다운받기</span></a>
-				<a th:if="${PdfFile['Saturday'] != null}" href="#" class="btn02" th:onclick="@{'showPdfFile(\'' + ${PdfFile['SaturdayFileDay']} + '\')'}"><span th:text="${PdfFile['Saturday']}">12.27</span>토요일<br /><span>다운받기</span></a>
-				<a th:if="${PdfFile['Sunday'] != null}" href="#" class="btn03" th:onclick="@{'showPdfFile(\'' + ${PdfFile['SundayFileDay']} + '\')'}" ><span th:text="${PdfFile['Sunday']}">12.27</span>일요일<br /><span>다운받기</span></a>
+				<a th:if="${PdfFile['Friday'] != null}" href="#" class="btn01" th:onclick="@{'showPdfFile(\'' + ${PdfFile['FridayFileDay']} + '\')'}" ><span th:text="${PdfFile['Friday']}">12.27</span>목요일<br /><span>다운받기</span></a>
+				<a th:if="${PdfFile['Saturday'] != null}" href="#" class="btn02" th:onclick="@{'showPdfFile(\'' + ${PdfFile['SaturdayFileDay']} + '\')'}"><span th:text="${PdfFile['Saturday']}">12.27</span>금요일<br /><span>다운받기</span></a>
+				<a th:if="${PdfFile['Sunday'] != null}" href="#" class="btn03" th:onclick="@{'showPdfFile(\'' + ${PdfFile['SundayFileDay']} + '\')'}" ><span th:text="${PdfFile['Sunday']}">12.27</span>토요일<br /><span>다운받기</span></a>
 			</div>
 		</div>
 
