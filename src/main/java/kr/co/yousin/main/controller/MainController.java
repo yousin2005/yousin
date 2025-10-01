@@ -12,11 +12,11 @@ import java.util.Map;
 @Controller
 public class MainController {
 
-    @GetMapping("/")
-    public String indexPage(Model model) {
-        model.addAttribute("aaa", "b");
-        return "index";
-    }
+//주석    @GetMapping("/")
+//주석    public String indexPage(Model model) {
+//주석        model.addAttribute("aaa", "b");
+//주석        return "index";
+//주석    }
 
     @GetMapping("/login")
     public String loginPage(Model model) {
