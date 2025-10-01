@@ -21,7 +21,7 @@ public class LoginController {
     public String indexPage(HttpServletRequest request, HttpServletResponse response, Model model) {
 
         // 뷰에서 사용할 오류 메시지 전달(필요 시)
-        model.addAttribute("error", request.getParameter("error"));
+        //model.addAttribute("error", request.getParameter("error"));
 
         // [선택] 시스템 메시지 차단 로직을 쓰려면 주석을 해제하세요.
         // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
